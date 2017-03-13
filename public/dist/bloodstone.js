@@ -34,7 +34,7 @@
 		},
 
 // INFO :
-		dk.stt( 'INFO', { name : 'Dk bloodstone', version : 'v0.0.1', github : 'https://github.com/ssw3131/garnet.git' } ),
+		dk.stt( 'INFO', { name : 'Dk bloodstone', version : 'v0.0.1', github : 'https://github.com/ssw3131/bloodstone.git' } ),
 
 // ERROR :
 		dk.fn( 'err', function( $log ){
