@@ -11,9 +11,9 @@ gulp.task( "combine", function() {
 			src + 'detector.js',
 			src + 'util.js'
 		] )
-		.pipe(sourcemaps.init())
+		.pipe( sourcemaps.init() )
 		.pipe( concat( 'bloodstone.js' ) )
-		.pipe(sourcemaps.write('./maps'))
+		.pipe( sourcemaps.write( './maps' ) )
 		.pipe( gulp.dest( dist ) );
 } );
 
