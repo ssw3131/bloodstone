@@ -215,7 +215,28 @@ dk.fn( 'random', ( function( mathRandom ) {
 		return function() {
 			return t0 ? ( r = dateNow() - t0, t0 = null, r ) : ( t0 = dateNow(), null );
 		}
-	} )( Date.now ) );
+	} )( Date.now ) ),
+
+	dk.fn( 'parseLocation', ( function() {
+		var obj;
+		return function() {
+			if( obj === undefined ) {
+				var pairs = location.search.substring( 1 ).split( "&" );
+				var pair, i;
+
+				obj = {};
+				for( i in pairs ) {
+					if( pairs[ i ] === "" ) continue;
+					pair = pairs[ i ].split( "=" );
+					obj[ decodeURIComponent( pair[ 0 ] ) ] = decodeURIComponent( pair[ 1 ] );
+				}
+
+				return obj;
+			} else {
+				return obj;
+			}
+		}
+	} )() );
 
 // BtModule :
 dk.cls( 'BtModule', ( function() {
