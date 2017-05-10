@@ -8,11 +8,11 @@
 	W.console = W[ 'console' ] ? W[ 'console' ] : { log : function(){} },
 		W.log = W[ 'log' ] ? W[ 'log' ] : function(){ W.console.log( arguments[ 0 ] ) },
 		Date.now = Date.now * 1 || function(){ return +new Date },
-		W.requestAnimFrame = (function(){ return W.requestAnimationFrame || W.webkitRequestAnimationFrame || W.mozRequestAnimationFrame || function( $loop ){ W.setTimeout( $loop, 17 ) } })(),
+		W.requestAnimFrame = (function(){ return W.requestAnimationFrame || W.webkitRequestAnimationFrame || W.mozRequestAnimationFrame || function( loop ){ W.setTimeout( loop, 17 ) } })(),
 		(function( f ){ W.setTimeout = f( W.setTimeout ), W.setInterval = f( W.setInterval ) })( function( f ){
-			return function( $a, $b ){
-				var a = [].slice.call( arguments, 2 );
-				return f( function(){ $a.apply( this, a ); }, $b );
+			return function( a, b ){
+				var arg = [].slice.call( arguments, 2 );
+				return f( function(){ a.apply( this, arg ); }, b );
 			};
 		} ),
 
@@ -20,25 +20,25 @@
 		dk = W.dk = W[ 'dk' ] ? W[ 'dk' ] : {},
 
 // CORE :
-		dk.fn = function( $k, $v ){
-			$k = $k.replace( trim, '' ), $k = $k.charAt( 0 ).toLowerCase() + $k.substring( 1, $k.length ),
-				dk[ $k ] ? dk.err( 'dk.fn에 이미 ' + $k + '값이 존재합니다' ) : dk[ $k ] = $v;
+		dk.fn = function( k, v ){
+			k = k.replace( trim, '' ), k = k.charAt( 0 ).toLowerCase() + k.substring( 1, k.length ),
+				dk[ k ] ? dk.err( 'dk.fn에 이미 ' + k + '값이 존재합니다' ) : dk[ k ] = v;
 		},
-		dk.cls = function( $k, $v ){
-			$k = $k.replace( trim, '' ), $k = $k.charAt( 0 ).toUpperCase() + $k.substring( 1, $k.length ),
-				dk[ $k ] ? dk.err( 'dk.cls에 이미 ' + $k + '값이 존재합니다' ) : dk[ $k ] = $v;
+		dk.cls = function( k, v ){
+			k = k.replace( trim, '' ), k = k.charAt( 0 ).toUpperCase() + k.substring( 1, k.length ),
+				dk[ k ] ? dk.err( 'dk.cls에 이미 ' + k + '값이 존재합니다' ) : dk[ k ] = v;
 		},
-		dk.stt = function( $k, $v ){
-			$k = $k.replace( trim, '' ).toUpperCase(),
-				dk[ $k ] ? dk.err( 'dk.stt에 이미 ' + $k + '값이 존재합니다' ) : dk[ $k ] = $v;
+		dk.stt = function( k, v ){
+			k = k.replace( trim, '' ).toUpperCase(),
+				dk[ k ] ? dk.err( 'dk.stt에 이미 ' + k + '값이 존재합니다' ) : dk[ k ] = v;
 		},
 
 // INFO :
 		dk.stt( 'INFO', { name : 'Dk bloodstone', version : 'v0.0.1', github : 'https://github.com/ssw3131/bloodstone.git' } ),
 
 // ERROR :
-		dk.fn( 'err', function( $log ){
-			log( 'dk error : ' + $log );
+		dk.fn( 'err', function( v ){
+			log( 'dk error : ' + v );
 		} ),
 
 // BOM :
@@ -48,20 +48,20 @@
 })();
 
 // DETECTOR :
-dk.stt( 'DETECTOR', ( function( $w, $doc ) {
-	var navi = $w.navigator,
+dk.stt( 'DETECTOR', ( function( w, doc ) {
+	var navi = w.navigator,
 		agent = navi.userAgent.toLowerCase(),
 		platform = navi.platform.toLowerCase(),
 		app = navi.appVersion.toLowerCase(),
 		device = 'pc',
 		os, osv, browser, bv, flash,
-		prefixCss, prefixStyle, transform3D, keyframe = $w[ 'CSSRule' ],
+		prefixCss, prefixStyle, transform3D, keyframe = w[ 'CSSRule' ],
 		docMode = 0,
-		d = $doc.createElement( 'div' ),
+		d = doc.createElement( 'div' ),
 		s = d.style,
-		c = $doc.createElement( 'canvas' ),
-		a = $doc.createElement( 'audio' ),
-		v = $doc.createElement( 'video' ),
+		c = doc.createElement( 'canvas' ),
+		a = doc.createElement( 'audio' ),
+		v = doc.createElement( 'video' ),
 		t0,
 		edge, ie, chrome, firefox, safari, opera, naver;
 
@@ -139,7 +139,7 @@ dk.stt( 'DETECTOR', ( function( $w, $doc ) {
 	switch ( browser ) {
 		case 'ie':
 			if ( bv == -1 ) bv = !c[ 'getContext' ] ? 8 : !( 'msTransition' in s ) && !( 'transition' in s ) ? 9 : c.getContext( 'webgl' ) || c.getContext( 'experimental-webgl' ) ? 11 : 10;
-			prefixCss = '-ms-', prefixStyle = 'ms', transform3D = bv > 9 ? true : false, docMode = $doc[ 'documentMode' ] || 0;
+			prefixCss = '-ms-', prefixStyle = 'ms', transform3D = bv > 9 ? true : false, docMode = doc[ 'documentMode' ] || 0;
 			break;
 		case 'firefox':
 			prefixCss = '-moz-', prefixStyle = 'Moz', transform3D = true;
@@ -184,7 +184,7 @@ dk.stt( 'DETECTOR', ( function( $w, $doc ) {
 		insertBefore: 'insertBefore' in d ? true : false,
 		innerText: 'innerText' in d ? true : false,
 		textContent: 'textContent' in d ? true : false,
-		touchBool: 'ontouchstart' in $w ? true : false,
+		touchBool: 'ontouchstart' in w ? true : false,
 		currentTarget: browser == 'firefox' ? 'target' : 'srcElement',
 		wheelEvent: browser == 'firefox' ? 'DOMMouseScroll' : 'mousewheel',
 		isLocalhost: location.host.indexOf( 'localhost' ) < 0 ? false : true
@@ -192,29 +192,137 @@ dk.stt( 'DETECTOR', ( function( $w, $doc ) {
 } )( dk.W, dk.DOC ) );
 
 // UTIL :
-dk.fn( 'random', ( function( $mathRandom ) {
-		return function( $max, $min ) {
-			return $max = $max || 1, $min = $min || 0, ( $max - $min ) * $mathRandom() + $min;
+dk.fn( 'random', ( function( mathRandom ) {
+		return function( max, min ) {
+			return max = max || 1, min = min || 0, ( max - min ) * mathRandom() + min;
 		}
 	} )( Math.random ) ),
 
 	dk.fn( 'randomInt', ( function( $mathRandom ) {
-		return function( $max, $min ) {
-			return $min = $min || 0, parseInt( ( $max - $min + 0.99999 ) * $mathRandom() + $min );
+		return function( max, min ) {
+			return min = min || 0, parseInt( ( max - min + 0.99999 ) * $mathRandom() + min );
 		}
 	} )( Math.random ) ),
 
-	dk.fn( 'randomColor', ( function( $randomInt ) {
+	dk.fn( 'randomColor', ( function( randomInt ) {
 		return function() {
-			return 'rgb(' + $randomInt( 256 ) + ', ' + $randomInt( 256 ) + ', ' + $randomInt( 256 ) + ')';
+			return 'rgb(' + randomInt( 256 ) + ', ' + randomInt( 256 ) + ', ' + randomInt( 256 ) + ')';
 		}
 	} )( dk.randomInt ) ),
 
-	dk.fn( 'timeCheck', ( function( $dateNow ) {
+	dk.fn( 'timeCheck', ( function( dateNow ) {
 		var t0, r;
 		return function() {
-			return t0 ? ( r = $dateNow() - t0, t0 = null, r ) : ( t0 = $dateNow(), null );
+			return t0 ? ( r = dateNow() - t0, t0 = null, r ) : ( t0 = dateNow(), null );
 		}
 	} )( Date.now ) );
+
+// BtModule :
+dk.cls( 'BtModule', ( function() {
+	var factory, BtModule;
+	var initBts, addTimer, delTimer;
+
+	// obj.$bts, obj.act, obj.btAct, obj.autoPlay, obj.autoPlaySpeed, obj.initIdx
+	BtModule = function( obj ) {
+		if( obj.$bts === undefined ) dk.err( 'BtModule : $bts' + '는 필수항목 입니다' ); // 외부 btAct 함수
+		if( obj.act === undefined ) dk.err( 'BtModule : act' + '는 필수항목 입니다' );
+		this.$bts = obj.$bts; // 돔 a 태그 리스트
+		this.autoPlay = obj.autoPlay; // auto play 여부
+		this.autoPlaySpeed = obj.autoPlaySpeed || 3000; // auto play speed
+		this.leng = this.$bts.parent().length; // a 태그 갯수
+		this.idx; // 현재 활성화 idx
+		this.oldIdx; // 기존 idx
+		this.timer; // timer
+
+		this.btAct = ( function() {
+			if( obj.btAct === undefined ) {
+				// 내부 btAct 함수
+				var $btsLi = obj.$bts.parent();
+				return function( idx ) {
+					$btsLi.removeClass( 'active' );
+					$btsLi.eq( idx ).addClass( 'active' );
+				};
+			} else {
+				// 외부 btAct 함수
+				return obj.btAct;
+			}
+		} )();
+
+		this.act = function( idx ) {
+			this.oldIdx = this.idx;
+			this.idx = idx;
+			this.btAct( this.idx );
+			// 외부 act 함수 실행
+			obj.act( this.idx, this.oldIdx );
+		};
+
+		initBts.call( this );
+		addTimer.call( this );
+
+		// 초기 실행 idx
+		this.act( obj.initIdx || 0 );
+	};
+
+		BtModule.prototype.next = function() {
+			var idx = this.idx;
+			idx = ++idx == this.leng ? 0 : idx;
+			this.act( idx );
+		};
+
+		BtModule.prototype.prev = function() {
+			var idx = this.idx;
+			idx = --idx < 0 ? this.leng - 1 : idx;
+			this.act( idx );
+		};
+
+		BtModule.prototype.play = function() {
+			this.autoPlay = true;
+			addTimer.call( this );
+		};
+
+		BtModule.prototype.stop = function() {
+			delTimer.call( this );
+		};
+
+		initBts = function() {
+			var self = this,
+				btsTimer;
+			this.$bts.on( 'mouseenter', function() {
+				delTimer.call( self );
+				clearTimeout( btsTimer );
+				self.btAct( $( this ).parent().index() );
+			} );
+			this.$bts.on( 'mouseleave', function() {
+				addTimer.call( self );
+				btsTimer = setTimeout( function() {
+					self.btAct( self.idx );
+				}, 300 );
+			} );
+			this.$bts.on( 'click', function( e ) {
+				e.preventDefault();
+				var idx = $( this ).parent().index();
+				if( self.idx === idx ) return;
+				self.act( idx );
+			} );
+		};
+
+		addTimer = function() {
+			if( !this.autoPlay ) return;
+			var self = this;
+			this.timer = setInterval( function() {
+				self.next();
+			}, this.autoPlaySpeed );
+		};
+
+		delTimer = function() {
+			clearInterval( this.timer );
+		};
+
+		factory = function( obj ) {
+			return new BtModule( obj );
+		};
+
+		return factory;
+} )() );
 
 //# sourceMappingURL=maps/bloodstone.js.map

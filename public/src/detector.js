@@ -1,18 +1,18 @@
 // DETECTOR :
-dk.stt( 'DETECTOR', ( function( $w, $doc ) {
-	var navi = $w.navigator,
+dk.stt( 'DETECTOR', ( function( w, doc ) {
+	var navi = w.navigator,
 		agent = navi.userAgent.toLowerCase(),
 		platform = navi.platform.toLowerCase(),
 		app = navi.appVersion.toLowerCase(),
 		device = 'pc',
 		os, osv, browser, bv, flash,
-		prefixCss, prefixStyle, transform3D, keyframe = $w[ 'CSSRule' ],
+		prefixCss, prefixStyle, transform3D, keyframe = w[ 'CSSRule' ],
 		docMode = 0,
-		d = $doc.createElement( 'div' ),
+		d = doc.createElement( 'div' ),
 		s = d.style,
-		c = $doc.createElement( 'canvas' ),
-		a = $doc.createElement( 'audio' ),
-		v = $doc.createElement( 'video' ),
+		c = doc.createElement( 'canvas' ),
+		a = doc.createElement( 'audio' ),
+		v = doc.createElement( 'video' ),
 		t0,
 		edge, ie, chrome, firefox, safari, opera, naver;
 
@@ -90,7 +90,7 @@ dk.stt( 'DETECTOR', ( function( $w, $doc ) {
 	switch ( browser ) {
 		case 'ie':
 			if ( bv == -1 ) bv = !c[ 'getContext' ] ? 8 : !( 'msTransition' in s ) && !( 'transition' in s ) ? 9 : c.getContext( 'webgl' ) || c.getContext( 'experimental-webgl' ) ? 11 : 10;
-			prefixCss = '-ms-', prefixStyle = 'ms', transform3D = bv > 9 ? true : false, docMode = $doc[ 'documentMode' ] || 0;
+			prefixCss = '-ms-', prefixStyle = 'ms', transform3D = bv > 9 ? true : false, docMode = doc[ 'documentMode' ] || 0;
 			break;
 		case 'firefox':
 			prefixCss = '-moz-', prefixStyle = 'Moz', transform3D = true;
@@ -135,7 +135,7 @@ dk.stt( 'DETECTOR', ( function( $w, $doc ) {
 		insertBefore: 'insertBefore' in d ? true : false,
 		innerText: 'innerText' in d ? true : false,
 		textContent: 'textContent' in d ? true : false,
-		touchBool: 'ontouchstart' in $w ? true : false,
+		touchBool: 'ontouchstart' in w ? true : false,
 		currentTarget: browser == 'firefox' ? 'target' : 'srcElement',
 		wheelEvent: browser == 'firefox' ? 'DOMMouseScroll' : 'mousewheel',
 		isLocalhost: location.host.indexOf( 'localhost' ) < 0 ? false : true
