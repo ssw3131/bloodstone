@@ -47,12 +47,14 @@ dk.cls( 'BtModule', ( function() {
 		BtModule.prototype.next = function() {
 			var idx = this.idx;
 			idx = ++idx == this.leng ? 0 : idx;
+			addTimer.call( this );
 			this.act( idx );
 		};
 
 		BtModule.prototype.prev = function() {
 			var idx = this.idx;
 			idx = --idx < 0 ? this.leng - 1 : idx;
+			addTimer.call( this );
 			this.act( idx );
 		};
 
@@ -90,6 +92,7 @@ dk.cls( 'BtModule', ( function() {
 		addTimer = function() {
 			if( !this.autoPlay ) return;
 			var self = this;
+			clearInterval( this.timer );
 			this.timer = setInterval( function() {
 				self.next();
 			}, this.autoPlaySpeed );
