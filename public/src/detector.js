@@ -1,5 +1,5 @@
 // DETECTOR :
-dk.stt( 'DETECTOR', ( function( w, doc ) {
+dk.static( 'DETECTOR', ( function( w, doc ) {
 	var navi = w.navigator,
 		agent = navi.userAgent.toLowerCase(),
 		platform = navi.platform.toLowerCase(),

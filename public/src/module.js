@@ -1,5 +1,5 @@
 // BtModule :
-dk.cls( 'BtModule', ( function() {
+dk.class( 'BtModule', ( function() {
 	var factory, BtModule;
 	var initBts, addTimer, delTimer;
 
