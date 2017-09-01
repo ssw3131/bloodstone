@@ -44,4 +44,3 @@ dk.function( 'random', ( function( mathRandom ) {
 			}
 		}
 	} )() );
-	log( 'test' );
