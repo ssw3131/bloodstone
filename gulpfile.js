@@ -10,7 +10,8 @@ gulp.task( "combine", function() {
 			src + 'bloodstone.js',
 			src + 'detector.js',
 			src + 'util.js',
-			src + 'module.js'
+			src + 'listManager.js',
+			src + 'scroll.js'
 		] )
 		.pipe( sourcemaps.init() )
 		.pipe( concat( 'bloodstone.js' ) )
