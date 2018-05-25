@@ -39,753 +39,754 @@
 		// 		dk.Css( '#container .content' ).S( 'padding', 20, 'marginBottom', 20, 'boxShadow', '0px 0px 10px #aaa', 'borderRadius', 4 );
 	</script>
 </head>
-<div id="container">
-	<h1>DK JS Framework - garnet v0.4</h1>
+<body>
+	<div id="container">
+		<h1>DK JS Framework - garnet v0.4</h1>
 
-	<div class="content">
-		<div class="hr2"></div>
-		<h2>Index</h2>
+		<div class="content">
+			<div class="hr2"></div>
+			<h2>Index</h2>
 
-		<div><a href="#Download">Download</a></div>
-		<div><a href="#Installation">Installation</a></div>
-		<div><a href="#Initialize">Initialize</a></div>
-		<div><a href="#Simple">Simple Example</a></div>
-		<div><a href="#KeyValue">Key, Value</a></div>
-		<div><a href="#Dom">dk.Dom</a></div>
-		<div><a href="#Smethod">S method</a></div>
-		<div><a href="#Css">dk.Css</a></div>
-		<div><a href="#DETECTOR">dk.DETECTOR</a></div>
-		<div><a href="#Static">Static</a></div>
-		<div><a href="#Util">Util</a></div>
-		<div><a href="#Loader">Loader</a></div>
-		<div><a href="#Sheet">dk.Sheet - Sprite Sheet</a></div>
-	</div>
-
-	<div class="content" id="Download">
-		<div class="hr2"></div>
-		<h2>Download</h2>
-
-		<div>
-			<a href="https://github.com/ssw3131/garnet.git" target="_blank">github</a>
+			<div><a href="#Download">Download</a></div>
+			<div><a href="#Installation">Installation</a></div>
+			<div><a href="#Initialize">Initialize</a></div>
+			<div><a href="#Simple">Simple Example</a></div>
+			<div><a href="#KeyValue">Key, Value</a></div>
+			<div><a href="#Dom">dk.Dom</a></div>
+			<div><a href="#Smethod">S method</a></div>
+			<div><a href="#Css">dk.Css</a></div>
+			<div><a href="#DETECTOR">dk.DETECTOR</a></div>
+			<div><a href="#Static">Static</a></div>
+			<div><a href="#Util">Util</a></div>
+			<div><a href="#Loader">Loader</a></div>
+			<div><a href="#Sheet">dk.Sheet - Sprite Sheet</a></div>
 		</div>
-		<div>
-			<a href="http://ssw3131.github.io/garnet/v0.4/garnet.js" target="_blank">garnet.js</a>
-		</div>
-		<div>
-			<a href="http://ssw3131.github.io/garnet/v0.4/garnet.min.js" target="_blank">garnet.min.js</a>
-		</div>
-	</div>
 
-	<div class="content" id="Installation">
-		<div class="hr2"></div>
-		<h2>Installation</h2>
+		<div class="content" id="Download">
+			<div class="hr2"></div>
+			<h2>Download</h2>
 
-		<div>
-			<pre class="brush:js">
-				<script src="http://ssw3131.github.io/garnet/v0.4/garnet.js"></script>
-			</pre>
-		</div>
-	</div>
-
-	<div class="content" id="Initialize">
-		<div class="hr2"></div>
-		<h2>Initialize</h2>
-
-		<div>
-			돔 로딩 완료 후 '// code' 부분이 실행됩니다.
-			<pre class="brush:js">
-				dk( function(){
-					// code
-				} )
-			</pre>
-		</div>
-	</div>
-
-	<div class="content" id="Simple">
-		<div class="hr2"></div>
-		<h2>Simple Example</h2>
-
-		<div>
-			간단 예제 입니다. div 엘리먼트 생성 후 css 속성 입력과 body에 추가하는 코드입니다.
-            <pre class="brush:js">
-				// 예제코드
-				dk( function(){
-					dk.Dom().S( 'width', '50%', 'height', 40, 'bgColor', dk.randomColor(), 'marginBottom', '1em', '<', 'body' );
-				} )
-            </pre>
-		</div>
-	</div>
-
-	<div class="content" id="KeyValue">
-		<div class="hr2"></div>
-		<h2>Key, Value</h2>
-
-		<div>
-			garnet은 기본적으로 key, value 시스템으로 운영됩니다. 다중 파라미터 전달 시 ( key, value ) 쌍으로 연결이 되며 key만 입력 시 value 값이 리턴됩니다. 그 외에는 Dom 객체가 리턴됩니다.
-            <pre class="brush:js">
-				// dk.Dom().S( $k, $v );
-
-				var dom = dk.Dom().S( 'width', '100%' );
-				dom.S( 'height', 100 );
-				dom.S( 'position', 'absolute' );
-
-				dom.S( 'left', 100, 'top', 100, 'display', 'none' );
-
-				var domWidth = dom.S( 'width' );
-            </pre>
-		</div>
-	</div>
-
-	<div class="content" id="Dom">
-		<div class="hr2"></div>
-		<h2>dk.Dom</h2>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>Element 객체 생성 - dk.Dom 객체</h3>
 			<div>
-				dk.Dom 메서드는 selector 또는 element 생성을 통해 dk Dom 객체를 반환하는 메서드 입니다.<br>
-				이 메서드는 Indexed collections 을 내장한 객체를 반환합니다. 내부 프로퍼티로 domList, dom, elList, el, length를 가지고 있습니다.<br>
-				domList : Dom 리스트, dom : 첫번째 Dom, elList : native element 리스트, el : 첫번째 element<br>
-				<br>
-				기본으로 div element가 생성됩니다.
-				<pre class="brush:js">
-					dk.Dom();
-
-					/* log
-					DomList {domList: Array[1], elList: Array[1], length: 1, dom: Dom, el: div}
-					domList:Array[1]
-					dom:Dom
-					elList:Array[1]
-					el:div
-					length:1
-					*/
-				</pre>
-			</pre>
+				<a href="https://github.com/ssw3131/garnet.git" target="_blank">github</a>
+			</div>
+			<div>
+				<a href="http://ssw3131.github.io/garnet/v0.4/garnet.js" target="_blank">garnet.js</a>
+			</div>
+			<div>
+				<a href="http://ssw3131.github.io/garnet/v0.4/garnet.min.js" target="_blank">garnet.min.js</a>
 			</div>
 		</div>
 
-		<div>
-			<div class="hr3"></div>
-			<h3>element 생성 - html 태그</h3>
-			<div>
-				파라미터로 문자열 html 코드 전달 시 해당 태그 객체가 생성됩니다.
-				<pre class="brush:js">
-					dk.Dom( '<div>
-					<div></div>
-				</div>' );
-				</pre>
+		<div class="content" id="Installation">
+			<div class="hr2"></div>
+			<h2>Installation</h2>
 
-				파라미터로 &lt; 뒤 element 이름 전달 시 해당 element가 생성됩니다.
-				<pre class="brush:js" id="Dom0">
-					dk.Dom( '<li' );
-					dk.Dom( '<ul' );
+			<div>
+				<pre class="brush:js">
+					<script src="http://ssw3131.github.io/garnet/v0.4/garnet.js"></script>
 				</pre>
 			</div>
 		</div>
 
-		<div>
-			<div class="hr3"></div>
-			<h3>셀렉터 - css selector</h3>
+		<div class="content" id="Initialize">
+			<div class="hr2"></div>
+			<h2>Initialize</h2>
+
 			<div>
-				css 셀렉터 문법 그대로 element 검색 후 dk.Dom 객체로 리턴됩니다.
+				돔 로딩 완료 후 '// code' 부분이 실행됩니다.
 				<pre class="brush:js">
-					dk.Dom( '#test' ); // id 검색
-					dk.Dom( '.test' ); // 클래스 검색
-					dk.Dom( '#test h1' );
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>native element</h3>
-			<div>
-				element 객체 전달 시 해당 객체로 생성된 dk.Dom 객체를 리턴합니다.
-				<pre class="brush:js">
-					dk.Dom( document.createElement( 'div' ) );
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>캐싱 - Caching</h3>
-			<div>
-				한번 탐색 된 객체는 돔트리를 재탐색하지 않고 내부 메모리에 캐싱하여 리턴합니다.
-				<pre class="brush:js">
-					dk.Dom( '#test' ); // id test 돔트리 탐색
-					dk.Dom( '#test' ); // #test 캐싱 리턴
-
-					dk.Dom( '#test', null ); // #test 캐싱 삭제
-				</pre>
-			</div>
-		</div>
-	</div>
-
-	<div class="content" id="Smethod">
-		<div class="hr2"></div>
-		<h2>S method</h2>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>key, value 시스템</h3>
-			<div>
-				key, value 시스템이 적용됩니다. <br>
-				기본적으로 해당 엘리먼트의 스타일 객체에 값이 입력됩니다. '@' 가 붙은 문자열로 입력 시 엘리먼트의 attribute 객체에 입력됩니다.<br>
-				수치는 px 없이 숫자값으로 입력 가능합니다. 퍼센트는 '10%', 문자열로 입력하면 됩니다. 리턴값은 px 값들은 숫자로 그외는 문자열로 리턴됩니다.
-				<pre class="brush:js">
-					// dk.Dom().S( $k, $v );
-					var dom = dk.Dom().S( 'left', 100, 'width', 100, 'height', 100 );
-					dom.S( 'top', '100%' );
-					dom.S( '@id', 'test' );
-					dom.S( 'left' ); // 100
-					dom.S( 'top' ); // '100%'
-					dom.S( '@id' ); // 'test'
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>css vendor prefix</h3>
-			<div>
-				vendor prefix는 자동으로 입력됩니다.
-				<pre class="brush:js">
-					// box-shadow, -ms-box-shadow, -moz-box-shadow, -o-box-shadow, -webkit-box-shadow
-					dk.Dom().S( 'boxShadow', '0px 0px 10px #62615f inset' );
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>특수함수</h3>
-			<div>
-				편의성 html / css 함수를 지원합니다.
-				<pre class="brush:js">
-					dk.Dom().S( '@addClass', 'className' ); // 클래스 삽입 (//TODO : 중복처리)
-					dk.Dom().S( '@delClass', 'className' ); // 클래스 제거 (//TODO : 중복처리)
-					dk.Dom().S( 'scrollLeft', 10 ); // scrollLeft 입력
-					dk.Dom().S( 'scrollTop', 10 ); // scrollTop 입력
-
-					dk.Dom().S( 'bgColor', '#fff' ); // backgoundColor 대체, rgba 입력 시 ie8 이하 rgb로 대체
-					dk.Dom().S( 'bgImg', 'img.jpg' ); // backgroundImage 대체, url 값만 입력
-					dk.Dom().S( 'float', 'left' ); // cssFloat, styleFloat 자동 분기
-					dk.Dom().S( 'opacity', 0.5 ); // ie8 이하 필터처리
-					dk.Dom().S( 'fontSmoothing', 'antialiased' );
-				</pre>
-
-				dk.Dom 객체 삽입 및 제거 함수, html 태그 삽입함수, 문자열 삽입함수를 지원합니다.
-				<pre class="brush:js">
-					// '>' 큰쪽이 부모객체
-					dk.Dom().S( '>', dk.Dom() );
-					dk.Dom().S( '&lt;', dk.Dom() );
-					dk.Dom().S( '>-', dk.Dom() );
-					dk.Dom().S( '&lt;-', dk.Dom() );
-
-					// innerHTML, 엘리먼트 앞 뒤 html 태그 삽입
-					dk.Dom().S( 'html', '<div>hello</div>' );
-					dk.Dom().S( '+html', <div>hello</div> );
-					dk.Dom().S( 'html+', <div>hello</div> );
-
-					// innerText, textContent 분기, 엘리먼트 앞 뒤 text 삽입
-					dk.Dom().S( 'text', 'hello' );
-					dk.Dom().S( '+text', 'hello' );
-					dk.Dom().S( 'text+', 'hello' );
-				</pre>
-
-				이벤트 추가함수를 지원합니다.<br>
-				이벤트 키값, 핸들러 매서드<br>
-				IE, 데스크탑, 모바일 자동 분기 - 해당 이벤트로 적용됩니다.
-				<pre class="brush:js">
-					var cb = function( $e ){
-						// $e.type, $e.target, $e.nativeEvent, $e.nativeTarget
-						log( $e );
-					};
-					dk.Dom().S( 'over', cb ); // mouseover
-					dk.Dom().S( 'enter', cb ); // mouseenter
-					dk.Dom().S( 'out', cb ); // mouseout
-					dk.Dom().S( 'leave', cb ); // mouseleave
-					dk.Dom().S( 'click', cb );
-					dk.Dom().S( 'dblclick', cb );
-					dk.Dom().S( 'down', cb ); // mousedown, touchstart
-					dk.Dom().S( 'move', cb ); // mousemove, touchmove
-					dk.Dom().S( 'up', cb ); // mouseup, touchend
-					dk.Dom().S( 'contextmenu', cb );
-				</pre>
-			</div>
-		</div>
-	</div>
-
-	<div class="content" id="Css">
-		<div class="hr2"></div>
-		<h2>dk.Css</h2>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>스타일 객체 생성 ( CSSStyleSheet ) - dk.Css 객체</h3>
-			<div>
-				스타일시트의 룰객체를 이용하여 스타일시트 전반을 통제할 수 있습니다<br>
-				css 생성 문법 그대로 적용됩니다.
-				<pre class="brush:js">
-					dk.Css( 'html' ); // html{ }
-					dk.Css( 'body' ); // body{ }
-					dk.Css( 'html, body' ); // html, body{ }
-					dk.Css( '.class' ); // .class{ }
-					dk.Css( '#class' ); // #class{ }
-					dk.Css( 'a:hover' ); // a:hover{ }
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>S method</h3>
-			<div>
-				dk.Dom의 S method와 동일한 인터페이스를 지원합니다.<br>
-				key, value 시스템, css vendor prefix, 편의성 css 입력 함수
-				<pre class="brush:js">
-					dk.Css( 'body' ).S( 'margin', 0, 'padding', 0 ); // 기본 css 문법
-					dk.Css( 'body' ).S( 'color', '#808081', 'font', '12px/18px Helvetica, Arial' ); // 중복 설정 가능 (상속)
-					dk.Css( 'body' ).S( 'bgColor', '#eceef4' ); // 편의성 css 입력 함수
-					dk.Css( '.test' ).S( 'boxShadow', '0px 0px 10px #62615f inset' ); // css vendor prefix
-
-					dk.Css( 'a:link, a:visited, a:active' ).S( 'color', '#808081', 'textDecoration', 'none' );
-					dk.Css( 'a:hover' ).S( 'color', '#222', 'textDecoration', 'underline' );
-					dk.Css( '.hr2' ).S( 'margin', '30px 0', 'borderTop', '1px solid #aaa' );
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>제어문 처리가능</h3>
-			<div>
-				dk.Css 객체를 통해 프로그래밍 언어로서 변수, 문, 식을 다양하게 응용할 수 있습니다.
-				<pre class="brush:js">
-					// ie 일 경우 배경색 흰색, 아닐경우 배경색 검정
-					var agent = window.navigator.userAgent.toLowerCase();
-					if( agent.indexOf( 'msie' ) &lt; 0 && agent.indexOf( 'trident' ) &lt; 0 ){
-						dk.Css( 'body' ).S( 'bgColor', '#fff' );
-					} else {
-						dk.Css( 'body' ).S( 'bgColor', '#000' );
-					}
-				</pre>
-			</div>
-		</div>
-	</div>
-
-	<div class="content" id="DETECTOR">
-		<div class="hr2"></div>
-		<h2>dk.DETECTOR</h2>
-
-		<div>
-			Detector를 통해서 데스크탑, 모바일, 브라우저, 객체 탐지 등을 미리 파악할 수 있습니다.
-            <pre class="brush:js">
-            	dk.DETECTOR;
-            </pre>
-            <pre class="brush:js" id="Detector">
-            </pre>
-			<script>
-				var dom0 = dk.Dom( '#Detector' ), detector = dk.DETECTOR, str = '', k;
-				for( k in detector ){
-					str += k + ' : ' + detector[ k ] + '\n';
-				}
-				dom0.S( 'html', str );
-			</script>
-            <pre class="brush:js">
-				// ie 일 경우 배경색 흰색, 아닐경우 배경색 검정
-				if( dk.DECTOER.browser == 'ie' ){
-					dk.Css( 'body' ).S( 'bgColor', '#fff' );
-				} else {
-					dk.Css( 'body' ).S( 'bgColor', '#000' );
-				}
-            </pre>
-		</div>
-	</div>
-
-	<div class="content" id="Static">
-		<div class="hr2"></div>
-		<h2>Static</h2>
-
-		<div>
-			WIN, RESIZE, LOOP, SCROLL, MOUSE, WHEEL, KEY, REG 의 스태틱 객체를 지원합니다.
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.LOOP</h3>
-			<div>
-				루프 객체를 지원합니다.<br>
-				S( $k, $cb )의 형태로 등록됩니다.
-				하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 requestAnimFrame 함수로 실행됩니다.
-				<pre class="brush:js">
-					dk.LOOP.S( $k, $cb );
-
-					// ex
-					var count = 1;
-					dk.LOOP.S( 'loop', function(){
-						count++;
-						log( count );
-					} );
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.WIN</h3>
-			<div>
-				window 관련 정보를 가지고 있는 dk.WIN 객체를 지원합니다.
-				<pre class="brush:js">
-					dk.WIN;
-					dk.WIN.width; // window 가로값을 반환합니다.
-					dk.WIN.height; // window 세로값을 반환합니다.
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.RESIZE</h3>
-			<div>
-				리사이즈 객체를 지원합니다.<br>
-				S( $k, $cb )의 형태로 등록됩니다. <br>
-				하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 리사이즈 이벤트로 실행됩니다.
-				<pre class="brush:js">
-					dk.RESIZE.S( $k, $cb );
-					dk.RESIZE.dispatchEvent(); // 강제로 이벤트를 발생시킵니다.
-
-					// ex
-					dk.RESIZE.S( 'resize', function( $e ){
-						log( 'width : ' + dk.WIN.width + ' height : ' + dk.WIN.height );
+					dk( function(){
+						// code
 					} )
 				</pre>
 			</div>
 		</div>
 
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.SCROLL</h3>
-			<div>
-				스크롤 객체를 지원합니다.<br>
-				S( $k, $cb )의 형태로 등록됩니다. <br>
-				하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 스크롤 이벤트로 실행됩니다.
-				<pre class="brush:js">
-					dk.SCROLL.S( $k, $cb );
-					dk.SCROLL.scrollLeft;
-					dk.SCROLL.scrollTop;
+		<div class="content" id="Simple">
+			<div class="hr2"></div>
+			<h2>Simple Example</h2>
 
-					// ex
-					dk.SCROLL.S( 'scroll', function( $e ){
-						log( 'scrollLeft : ' + dk.SCROLL.scrollLeft + ' scrollTop : ' + dk.SCROLL.scrollTop );
-					} );
-				</pre>
+			<div>
+				간단 예제 입니다. div 엘리먼트 생성 후 css 속성 입력과 body에 추가하는 코드입니다.
+	            <pre class="brush:js">
+					// 예제코드
+					dk( function(){
+						dk.Dom().S( 'width', '50%', 'height', 40, 'bgColor', dk.randomColor(), 'marginBottom', '1em', '<', 'body' );
+					} )
+	            </pre>
 			</div>
 		</div>
 
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.MOUSE</h3>
+		<div class="content" id="KeyValue">
+			<div class="hr2"></div>
+			<h2>Key, Value</h2>
+
 			<div>
-				마우스 객체를 지원합니다.<br>
-				S( $k, $cb )의 형태로 등록됩니다. <br>
-				하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 마우스 이벤트로 실행됩니다.
-				<pre class="brush:js">
-					dk.MOUSE.S( $k, $cb );
+				garnet은 기본적으로 key, value 시스템으로 운영됩니다. 다중 파라미터 전달 시 ( key, value ) 쌍으로 연결이 되며 key만 입력 시 value 값이 리턴됩니다. 그 외에는 Dom 객체가 리턴됩니다.
+	            <pre class="brush:js">
+					// dk.Dom().S( $k, $v );
 
-					// 화면에 보이는 0,0 좌표 기준 마우스 위치
-					dk.MOUSE.mouseX;
-					dk.MOUSE.mouseY;
+					var dom = dk.Dom().S( 'width', '100%' );
+					dom.S( 'height', 100 );
+					dom.S( 'position', 'absolute' );
 
-					// 스크롤로 숨은 영역을 포함하는 0,0 좌표 기준 마우스 위치
-					dk.MOUSE.pageX;
-					dk.MOUSE.pageY;
+					dom.S( 'left', 100, 'top', 100, 'display', 'none' );
 
-					// mousedown, touchstart 이후 움직인 거리
-					dk.MOUSE.moveX;
-					dk.MOUSE.moveY;
+					var domWidth = dom.S( 'width' );
+	            </pre>
+			</div>
+		</div>
 
-					// 직전 프레임 기준 마우스 이동 속도
-					dk.MOUSE.speedX;
-					dk.MOUSE.speedY;
+		<div class="content" id="Dom">
+			<div class="hr2"></div>
+			<h2>dk.Dom</h2>
 
-					// 기본값 실행방지
-					$e.nativeEvent.preventDefault();
+			<div>
+				<div class="hr3"></div>
+				<h3>Element 객체 생성 - dk.Dom 객체</h3>
+				<div>
+					dk.Dom 메서드는 selector 또는 element 생성을 통해 dk Dom 객체를 반환하는 메서드 입니다.<br>
+					이 메서드는 Indexed collections 을 내장한 객체를 반환합니다. 내부 프로퍼티로 domList, dom, elList, el, length를 가지고 있습니다.<br>
+					domList : Dom 리스트, dom : 첫번째 Dom, elList : native element 리스트, el : 첫번째 element<br>
+					<br>
+					기본으로 div element가 생성됩니다.
+					<pre class="brush:js">
+						dk.Dom();
 
-					// ex
-					dk.MOUSE.S( 'mouse', function( $e ){
-						var str, i, leng;
-						str = 'mouseX : ' + dk.MOUSE.mouseX,
-								str += ', <br>mouseY : ' + dk.MOUSE.mouseY,
-								str += ', <br>pageX : ' + dk.MOUSE.pageX,
-								str += ', <br>pageY : ' + dk.MOUSE.pageY,
-								str += ', <br>speedX : ' + dk.MOUSE.speedX,
-								str += ', <br>speedY : ' + dk.MOUSE.speedY,
-								str += ', <br>touches : ' + dk.MOUSE.touches,
-								str += ', <br>targetTouches : ' + dk.MOUSE.targetTouches,
-								str += ', <br>changedTouches : ' + dk.MOUSE.changedTouches;
-						if( dk.MOUSE.touches ){
-							leng = dk.MOUSE.touches.length;
-							for( i = 0; i < leng; i++ ){
-								str += ', <br>touches x : ' + dk.MOUSE.touches[ i ].clientX;
-								str += ', <br>touches y : ' + dk.MOUSE.touches[ i ].clientY;
+						/* log
+						DomList {domList: Array[1], elList: Array[1], length: 1, dom: Dom, el: div}
+						domList:Array[1]
+						dom:Dom
+						elList:Array[1]
+						el:div
+						length:1
+						*/
+					</pre>
+				</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>element 생성 - html 태그</h3>
+				<div>
+					파라미터로 문자열 html 코드 전달 시 해당 태그 객체가 생성됩니다.
+					<pre class="brush:js">
+						dk.Dom( '<div>
+						<div></div>
+					</div>' );
+					</pre>
+
+					파라미터로 &lt; 뒤 element 이름 전달 시 해당 element가 생성됩니다.
+					<pre class="brush:js" id="Dom0">
+						dk.Dom( '<li' );
+						dk.Dom( '<ul' );
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>셀렉터 - css selector</h3>
+				<div>
+					css 셀렉터 문법 그대로 element 검색 후 dk.Dom 객체로 리턴됩니다.
+					<pre class="brush:js">
+						dk.Dom( '#test' ); // id 검색
+						dk.Dom( '.test' ); // 클래스 검색
+						dk.Dom( '#test h1' );
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>native element</h3>
+				<div>
+					element 객체 전달 시 해당 객체로 생성된 dk.Dom 객체를 리턴합니다.
+					<pre class="brush:js">
+						dk.Dom( document.createElement( 'div' ) );
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>캐싱 - Caching</h3>
+				<div>
+					한번 탐색 된 객체는 돔트리를 재탐색하지 않고 내부 메모리에 캐싱하여 리턴합니다.
+					<pre class="brush:js">
+						dk.Dom( '#test' ); // id test 돔트리 탐색
+						dk.Dom( '#test' ); // #test 캐싱 리턴
+
+						dk.Dom( '#test', null ); // #test 캐싱 삭제
+					</pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="content" id="Smethod">
+			<div class="hr2"></div>
+			<h2>S method</h2>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>key, value 시스템</h3>
+				<div>
+					key, value 시스템이 적용됩니다. <br>
+					기본적으로 해당 엘리먼트의 스타일 객체에 값이 입력됩니다. '@' 가 붙은 문자열로 입력 시 엘리먼트의 attribute 객체에 입력됩니다.<br>
+					수치는 px 없이 숫자값으로 입력 가능합니다. 퍼센트는 '10%', 문자열로 입력하면 됩니다. 리턴값은 px 값들은 숫자로 그외는 문자열로 리턴됩니다.
+					<pre class="brush:js">
+						// dk.Dom().S( $k, $v );
+						var dom = dk.Dom().S( 'left', 100, 'width', 100, 'height', 100 );
+						dom.S( 'top', '100%' );
+						dom.S( '@id', 'test' );
+						dom.S( 'left' ); // 100
+						dom.S( 'top' ); // '100%'
+						dom.S( '@id' ); // 'test'
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>css vendor prefix</h3>
+				<div>
+					vendor prefix는 자동으로 입력됩니다.
+					<pre class="brush:js">
+						// box-shadow, -ms-box-shadow, -moz-box-shadow, -o-box-shadow, -webkit-box-shadow
+						dk.Dom().S( 'boxShadow', '0px 0px 10px #62615f inset' );
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>특수함수</h3>
+				<div>
+					편의성 html / css 함수를 지원합니다.
+					<pre class="brush:js">
+						dk.Dom().S( '@addClass', 'className' ); // 클래스 삽입 (//TODO : 중복처리)
+						dk.Dom().S( '@delClass', 'className' ); // 클래스 제거 (//TODO : 중복처리)
+						dk.Dom().S( 'scrollLeft', 10 ); // scrollLeft 입력
+						dk.Dom().S( 'scrollTop', 10 ); // scrollTop 입력
+
+						dk.Dom().S( 'bgColor', '#fff' ); // backgoundColor 대체, rgba 입력 시 ie8 이하 rgb로 대체
+						dk.Dom().S( 'bgImg', 'img.jpg' ); // backgroundImage 대체, url 값만 입력
+						dk.Dom().S( 'float', 'left' ); // cssFloat, styleFloat 자동 분기
+						dk.Dom().S( 'opacity', 0.5 ); // ie8 이하 필터처리
+						dk.Dom().S( 'fontSmoothing', 'antialiased' );
+					</pre>
+
+					dk.Dom 객체 삽입 및 제거 함수, html 태그 삽입함수, 문자열 삽입함수를 지원합니다.
+					<pre class="brush:js">
+						// '>' 큰쪽이 부모객체
+						dk.Dom().S( '>', dk.Dom() );
+						dk.Dom().S( '&lt;', dk.Dom() );
+						dk.Dom().S( '>-', dk.Dom() );
+						dk.Dom().S( '&lt;-', dk.Dom() );
+
+						// innerHTML, 엘리먼트 앞 뒤 html 태그 삽입
+						dk.Dom().S( 'html', '<div>hello</div>' );
+						dk.Dom().S( '+html', <div>hello</div> );
+						dk.Dom().S( 'html+', <div>hello</div> );
+
+						// innerText, textContent 분기, 엘리먼트 앞 뒤 text 삽입
+						dk.Dom().S( 'text', 'hello' );
+						dk.Dom().S( '+text', 'hello' );
+						dk.Dom().S( 'text+', 'hello' );
+					</pre>
+
+					이벤트 추가함수를 지원합니다.<br>
+					이벤트 키값, 핸들러 매서드<br>
+					IE, 데스크탑, 모바일 자동 분기 - 해당 이벤트로 적용됩니다.
+					<pre class="brush:js">
+						var cb = function( $e ){
+							// $e.type, $e.target, $e.nativeEvent, $e.nativeTarget
+							log( $e );
+						};
+						dk.Dom().S( 'over', cb ); // mouseover
+						dk.Dom().S( 'enter', cb ); // mouseenter
+						dk.Dom().S( 'out', cb ); // mouseout
+						dk.Dom().S( 'leave', cb ); // mouseleave
+						dk.Dom().S( 'click', cb );
+						dk.Dom().S( 'dblclick', cb );
+						dk.Dom().S( 'down', cb ); // mousedown, touchstart
+						dk.Dom().S( 'move', cb ); // mousemove, touchmove
+						dk.Dom().S( 'up', cb ); // mouseup, touchend
+						dk.Dom().S( 'contextmenu', cb );
+					</pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="content" id="Css">
+			<div class="hr2"></div>
+			<h2>dk.Css</h2>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>스타일 객체 생성 ( CSSStyleSheet ) - dk.Css 객체</h3>
+				<div>
+					스타일시트의 룰객체를 이용하여 스타일시트 전반을 통제할 수 있습니다<br>
+					css 생성 문법 그대로 적용됩니다.
+					<pre class="brush:js">
+						dk.Css( 'html' ); // html{ }
+						dk.Css( 'body' ); // body{ }
+						dk.Css( 'html, body' ); // html, body{ }
+						dk.Css( '.class' ); // .class{ }
+						dk.Css( '#class' ); // #class{ }
+						dk.Css( 'a:hover' ); // a:hover{ }
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>S method</h3>
+				<div>
+					dk.Dom의 S method와 동일한 인터페이스를 지원합니다.<br>
+					key, value 시스템, css vendor prefix, 편의성 css 입력 함수
+					<pre class="brush:js">
+						dk.Css( 'body' ).S( 'margin', 0, 'padding', 0 ); // 기본 css 문법
+						dk.Css( 'body' ).S( 'color', '#808081', 'font', '12px/18px Helvetica, Arial' ); // 중복 설정 가능 (상속)
+						dk.Css( 'body' ).S( 'bgColor', '#eceef4' ); // 편의성 css 입력 함수
+						dk.Css( '.test' ).S( 'boxShadow', '0px 0px 10px #62615f inset' ); // css vendor prefix
+
+						dk.Css( 'a:link, a:visited, a:active' ).S( 'color', '#808081', 'textDecoration', 'none' );
+						dk.Css( 'a:hover' ).S( 'color', '#222', 'textDecoration', 'underline' );
+						dk.Css( '.hr2' ).S( 'margin', '30px 0', 'borderTop', '1px solid #aaa' );
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>제어문 처리가능</h3>
+				<div>
+					dk.Css 객체를 통해 프로그래밍 언어로서 변수, 문, 식을 다양하게 응용할 수 있습니다.
+					<pre class="brush:js">
+						// ie 일 경우 배경색 흰색, 아닐경우 배경색 검정
+						var agent = window.navigator.userAgent.toLowerCase();
+						if( agent.indexOf( 'msie' ) &lt; 0 && agent.indexOf( 'trident' ) &lt; 0 ){
+							dk.Css( 'body' ).S( 'bgColor', '#fff' );
+						} else {
+							dk.Css( 'body' ).S( 'bgColor', '#000' );
+						}
+					</pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="content" id="DETECTOR">
+			<div class="hr2"></div>
+			<h2>dk.DETECTOR</h2>
+
+			<div>
+				Detector를 통해서 데스크탑, 모바일, 브라우저, 객체 탐지 등을 미리 파악할 수 있습니다.
+	            <pre class="brush:js">
+	            	dk.DETECTOR;
+	            </pre>
+	            <pre class="brush:js" id="Detector">
+	            </pre>
+				<script>
+					var dom0 = dk.Dom( '#Detector' ), detector = dk.DETECTOR, str = '', k;
+					for( k in detector ){
+						str += k + ' : ' + detector[ k ] + '\n';
+					}
+					dom0.S( 'html', str );
+				</script>
+	            <pre class="brush:js">
+					// ie 일 경우 배경색 흰색, 아닐경우 배경색 검정
+					if( dk.DECTOER.browser == 'ie' ){
+						dk.Css( 'body' ).S( 'bgColor', '#fff' );
+					} else {
+						dk.Css( 'body' ).S( 'bgColor', '#000' );
+					}
+	            </pre>
+			</div>
+		</div>
+
+		<div class="content" id="Static">
+			<div class="hr2"></div>
+			<h2>Static</h2>
+
+			<div>
+				WIN, RESIZE, LOOP, SCROLL, MOUSE, WHEEL, KEY, REG 의 스태틱 객체를 지원합니다.
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.LOOP</h3>
+				<div>
+					루프 객체를 지원합니다.<br>
+					S( $k, $cb )의 형태로 등록됩니다.
+					하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 requestAnimFrame 함수로 실행됩니다.
+					<pre class="brush:js">
+						dk.LOOP.S( $k, $cb );
+
+						// ex
+						var count = 1;
+						dk.LOOP.S( 'loop', function(){
+							count++;
+							log( count );
+						} );
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.WIN</h3>
+				<div>
+					window 관련 정보를 가지고 있는 dk.WIN 객체를 지원합니다.
+					<pre class="brush:js">
+						dk.WIN;
+						dk.WIN.width; // window 가로값을 반환합니다.
+						dk.WIN.height; // window 세로값을 반환합니다.
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.RESIZE</h3>
+				<div>
+					리사이즈 객체를 지원합니다.<br>
+					S( $k, $cb )의 형태로 등록됩니다. <br>
+					하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 리사이즈 이벤트로 실행됩니다.
+					<pre class="brush:js">
+						dk.RESIZE.S( $k, $cb );
+						dk.RESIZE.dispatchEvent(); // 강제로 이벤트를 발생시킵니다.
+
+						// ex
+						dk.RESIZE.S( 'resize', function( $e ){
+							log( 'width : ' + dk.WIN.width + ' height : ' + dk.WIN.height );
+						} )
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.SCROLL</h3>
+				<div>
+					스크롤 객체를 지원합니다.<br>
+					S( $k, $cb )의 형태로 등록됩니다. <br>
+					하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 스크롤 이벤트로 실행됩니다.
+					<pre class="brush:js">
+						dk.SCROLL.S( $k, $cb );
+						dk.SCROLL.scrollLeft;
+						dk.SCROLL.scrollTop;
+
+						// ex
+						dk.SCROLL.S( 'scroll', function( $e ){
+							log( 'scrollLeft : ' + dk.SCROLL.scrollLeft + ' scrollTop : ' + dk.SCROLL.scrollTop );
+						} );
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.MOUSE</h3>
+				<div>
+					마우스 객체를 지원합니다.<br>
+					S( $k, $cb )의 형태로 등록됩니다. <br>
+					하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 마우스 이벤트로 실행됩니다.
+					<pre class="brush:js">
+						dk.MOUSE.S( $k, $cb );
+
+						// 화면에 보이는 0,0 좌표 기준 마우스 위치
+						dk.MOUSE.mouseX;
+						dk.MOUSE.mouseY;
+
+						// 스크롤로 숨은 영역을 포함하는 0,0 좌표 기준 마우스 위치
+						dk.MOUSE.pageX;
+						dk.MOUSE.pageY;
+
+						// mousedown, touchstart 이후 움직인 거리
+						dk.MOUSE.moveX;
+						dk.MOUSE.moveY;
+
+						// 직전 프레임 기준 마우스 이동 속도
+						dk.MOUSE.speedX;
+						dk.MOUSE.speedY;
+
+						// 기본값 실행방지
+						$e.nativeEvent.preventDefault();
+
+						// ex
+						dk.MOUSE.S( 'mouse', function( $e ){
+							var str, i, leng;
+							str = 'mouseX : ' + dk.MOUSE.mouseX,
+									str += ', <br>mouseY : ' + dk.MOUSE.mouseY,
+									str += ', <br>pageX : ' + dk.MOUSE.pageX,
+									str += ', <br>pageY : ' + dk.MOUSE.pageY,
+									str += ', <br>speedX : ' + dk.MOUSE.speedX,
+									str += ', <br>speedY : ' + dk.MOUSE.speedY,
+									str += ', <br>touches : ' + dk.MOUSE.touches,
+									str += ', <br>targetTouches : ' + dk.MOUSE.targetTouches,
+									str += ', <br>changedTouches : ' + dk.MOUSE.changedTouches;
+							if( dk.MOUSE.touches ){
+								leng = dk.MOUSE.touches.length;
+								for( i = 0; i < leng; i++ ){
+									str += ', <br>touches x : ' + dk.MOUSE.touches[ i ].clientX;
+									str += ', <br>touches y : ' + dk.MOUSE.touches[ i ].clientY;
+								}
 							}
-						}
-						log( str )
-					} );
-				</pre>
+							log( str )
+						} );
+					</pre>
+				</div>
 			</div>
-		</div>
 
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.WHEEL</h3>
 			<div>
-				휠 객체를 지원합니다.<br>
-				S( $k, $cb )의 형태로 등록됩니다. <br>
-				하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 휠 이벤트로 실행됩니다.<br>
-				1개 이상 이벤트에 등록됐을 때 실행됩니다.
-				<pre class="brush:js">
-					dk.WHEEL.S( $k, $cb );
+				<div class="hr3"></div>
+				<h3>dk.WHEEL</h3>
+				<div>
+					휠 객체를 지원합니다.<br>
+					S( $k, $cb )의 형태로 등록됩니다. <br>
+					하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 휠 이벤트로 실행됩니다.<br>
+					1개 이상 이벤트에 등록됐을 때 실행됩니다.
+					<pre class="brush:js">
+						dk.WHEEL.S( $k, $cb );
 
-					// ex
-					dk.WHEEL.S( 'wheel', function( $e ){
-						log( 'delta : ' + $e.delta );
-					} );
-				</pre>
+						// ex
+						dk.WHEEL.S( 'wheel', function( $e ){
+							log( 'delta : ' + $e.delta );
+						} );
+					</pre>
+				</div>
 			</div>
-		</div>
 
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.KEY</h3>
 			<div>
-				키보드 객체를 지원합니다.<br>
-				S( $k, $cb )의 형태로 등록됩니다. <br>
-				하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 키보드 이벤트로 실행됩니다.<br>
-				키값은 키보드의 실제 문자값으로 매칭 되고 1개 이상 이벤트에 등록됐을 때 실행됩니다. 키값은 대문자로 입력해야 합니다.<br>
+				<div class="hr3"></div>
+				<h3>dk.KEY</h3>
+				<div>
+					키보드 객체를 지원합니다.<br>
+					S( $k, $cb )의 형태로 등록됩니다. <br>
+					하나의 스태틱 객체 내에 키값 별로 개별 핸들러 함수가 추가되며 한개의 키보드 이벤트로 실행됩니다.<br>
+					키값은 키보드의 실제 문자값으로 매칭 되고 1개 이상 이벤트에 등록됐을 때 실행됩니다. 키값은 대문자로 입력해야 합니다.<br>
 
-				<span style="font-size: 10px; color:#bbb;">0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
-					SPACE, BACKSPACE, TAB, ENTER, SHIFT, CTRL, ALT, PAUSE, CAPSLOCK, ESC, PAGE_UP, PAGE_DOWN, END, HOME, LEFT_ARROW, UP_ARROW, RIGHT_ARROW, DOWN_ARROW, INSERT, DELETE, NUMLOCK, SCROLLLOCK,
-					NUMPAD_0, NUMPAD_1, NUMPAD_2, NUMPAD_3, NUMPAD_4, NUMPAD_5, NUMPAD_6, NUMPAD_7, NUMPAD_8, NUMPAD_9, COMA, SLASH, BACKSLASH,
-					F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12</span>
+					<span style="font-size: 10px; color:#bbb;">0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
+						SPACE, BACKSPACE, TAB, ENTER, SHIFT, CTRL, ALT, PAUSE, CAPSLOCK, ESC, PAGE_UP, PAGE_DOWN, END, HOME, LEFT_ARROW, UP_ARROW, RIGHT_ARROW, DOWN_ARROW, INSERT, DELETE, NUMLOCK, SCROLLLOCK,
+						NUMPAD_0, NUMPAD_1, NUMPAD_2, NUMPAD_3, NUMPAD_4, NUMPAD_5, NUMPAD_6, NUMPAD_7, NUMPAD_8, NUMPAD_9, COMA, SLASH, BACKSLASH,
+						F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12</span>
 
-				<pre class="brush:js">
-					dk.KEY.S( $k, $cb );
+					<pre class="brush:js">
+						dk.KEY.S( $k, $cb );
 
-					// ex
-					dk.KEY.S( 'A', function( $e ){
-						// $e.keyCode, $e.nativeEvent, $e.nativeTarget
-						log( $e );
-					});
-					dk.KEY.S( 'B', function( $e ){
-						// $e.keyCode, $e.nativeEvent, $e.nativeTarget
-						log( $e );
-					});
-				</pre>
+						// ex
+						dk.KEY.S( 'A', function( $e ){
+							// $e.keyCode, $e.nativeEvent, $e.nativeTarget
+							log( $e );
+						});
+						dk.KEY.S( 'B', function( $e ){
+							// $e.keyCode, $e.nativeEvent, $e.nativeTarget
+							log( $e );
+						});
+					</pre>
+				</div>
 			</div>
 		</div>
+
+		<div class="content" id="Util">
+			<div class="hr2"></div>
+			<h2>Util</h2>
+
+			<div>
+				유틸함수를 지원합니다.
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.random</h3>
+				<div>
+					$max와 $min 사이의 랜덤 숫자를 반환합니다<br>
+					앞의 숫자가 큰 숫자 입니다. $min 생략시 0 ~ $max 사이의 램덤 숫자를, 둘 다 생략 시 0 ~ 1 사이의 랜덤 숫자를 반환합니다.
+					<pre class="brush:js">
+						dk.random(); // 0 ~ 1
+						dk.random( $max ); // 0 ~ $max
+						dk.random( $max, $min ); // $min ~ $max
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.randomInt</h3>
+				<div>
+					$max와 $min 사이의 랜덤 정수를 반환합니다<br>
+					앞의 숫자가 큰 숫자 입니다. $min 생략시 0 ~ $max 사이의 램덤 숫자를 반환합니다. 둘다 생략은 불가능 합니다.
+					<pre class="brush:js">
+						dk.randomInt( $max ); // 0 ~ $max
+						dk.randomInt( $max, $min ); // $min ~ $max
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.randomColor</h3>
+				<div>
+					rgb(255, 255, 255) 사이의 랜덤 컬러값을 반환합니다
+					<pre class="brush:js">
+						dk.randomColor();
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.timeCheck</h3>
+				<div>
+					dk.timeCheck() 실행시점과 다음 dk.timeCheck() 실행시점 사이의 시간을 반환합니다. Date.now()로 체크합니다.
+					<pre class="brush:js">
+						dk.timeCheck(); // null
+						dk.timeCheck(); // 숫자
+						dk.timeCheck(); // null
+						dk.timeCheck(); // 숫자
+					</pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="content" id="Loader">
+			<div class="hr2"></div>
+			<h2>Loader</h2>
+
+			<div>
+				AJAX, JS, IMG 로더를 지원합니다
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.ajax</h3>
+				<div>
+					ajax 통신을 지원합니다.<br>
+					get 방식의 통신만 지원합니다.<br>
+					url과 필요할경우 매개변수를 추가해 호출할 수 있습니다.<br>
+					로드 에러 및 타임아웃 (5000) 시 $data에 null이 넘어옵니다.
+					<pre class="brush:js">
+						dk.ajax( $cb, $url/*, paramK, paramV...*/ );
+
+						dk.ajax( function( $data, $status ){
+						}, 'data.txt' );
+
+						dk.ajax( function( $data, $status ){
+							if( $data ){
+								var data = dk.JSON.parse( $data );
+							}
+						}, 'data.json', 'k', 'v' ); // data.json?k=v
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.js</h3>
+				<div>
+					javascript 파일 로더를 지원합니다. 비동기로 작동됩니다.<br>
+					콜백 함수 뒤 로드하고자 하는 url, 또는 url 배열 입력 시, 순차적으로 로드 합니다. 모든 파일이 로드 되면 콜백함수를 호출합니다.
+					<pre class="brush:js">
+						dk.js( $cb, $url/* , [], $url */ )
+
+						dk.js( function(){
+						}, 'data.js' );
+
+						dk.js( function(){
+						}, 'data1.js', [ 'data2.js', 'data3.js' ], 'data4.js' );
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.img</h3>
+				<div>
+					이미지 파일 로더를 지원합니다. 프리로더로 사용 가능합니다.<br>
+					콜백 함수 뒤 로드하고자 하는 url 입력 시, 순차적으로 로드 합니다. 모든 파일이 로드 되면 콜백함수를 호출되며 입력한 url순의 img element 배열을 리턴합니다.<br>
+					로드 에러 시 false를 리턴합니다. ( // todo ie8 확인필요)
+					<pre class="brush:js">
+						dk.img( $cb, $src/* ,$src, $src */ )
+
+						dk.img( function( $arr ){
+							log( $arr[ 0 ] );
+						}, 'data.jpg' );
+
+						dk.img( function( $arr ){
+							log( $arr );
+						}, 'data1.jpg', 'data2.jpg',  [ 'data3.jpg', 'data4.jpg' ], 'data5.jpg' );
+					</pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="content" id="Sheet">
+			<div class="hr2"></div>
+			<h2>dk.Sheet - Sprite Sheet</h2>
+
+			<div>
+				Sprite Sheet는 여러 개의 작은 그래픽을 바둑판식 격자 배열로 포함하고 있는 비트맵 이미지 파일입니다.<br>
+				여러 그래픽을 단일 파일로 사용함으로써 Animate 및 모바일 버튼 등의 활용에서 한 파일만 로드하여 그래픽을 사용할 수 있도록 합니다.
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>Sprite Sheet 객체 생성 - dk.Sheet 객체</h3>
+				<div>
+					dk.Sheet 메서드는 Sprite Sheet 이미지와 데이터 파일을 로드하여 Sprite Sheet 객체를 반환하는 메서드 입니다.<br>
+					dk.Dom을 확장하여 구현되어 있습니다.
+					<pre class="brush:js">
+					dk.Sheet( $cb, $img, $json/*, $framerate*/ );
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.Sheet().S()</h3>
+				<div>
+					dk.Dom을 확장하여 사용하기 때문에 dk.Dom의 모든 매서드를 사용할 수 있습니다.
+					<pre class="brush:js">
+						dk.Sheet( function(){}, 'asset/box.png', 'asset/box.json' ).S( 'position', 'absolute', '<', 'body' );
+					</pre>
+				</div>
+			</div>
+
+			<div>
+				<div class="hr3"></div>
+				<h3>dk.Sheet().S2()</h3>
+				<div>
+					dk.Sheet의 개별 매서드들은 S2 매서드를 통해 사용할 수 있습니다.
+					<pre class="brush:js">
+						var sheet = dk.Sheet( function( $sheet ){}, 'asset/box.png', 'asset/box.json' );
+
+						// 반복 재생
+						sheet.S2( 'repeat' );
+
+						// 1회 재생
+						sheet.S2( 'play' );
+
+						// 정지
+						sheet.S2( 'stop' );
+
+						// 뒤로 재생
+						sheet.S2( 'rewind' );
+
+						// 해당 프레임 이동 후 정지
+						sheet.S2( 'gotoAndStop', frame );
+
+						// 해당 프레임 이동 후 1회 재생
+						sheet.S2( 'gotoAndPlay', frame );
+
+						// 구간 반복
+						sheet.S2( 'abRepeat', frame1, frame2 );
+					</pre>
+				</div>
+			</div>
+		</div>
+
 	</div>
-
-	<div class="content" id="Util">
-		<div class="hr2"></div>
-		<h2>Util</h2>
-
-		<div>
-			유틸함수를 지원합니다.
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.random</h3>
-			<div>
-				$max와 $min 사이의 랜덤 숫자를 반환합니다<br>
-				앞의 숫자가 큰 숫자 입니다. $min 생략시 0 ~ $max 사이의 램덤 숫자를, 둘 다 생략 시 0 ~ 1 사이의 랜덤 숫자를 반환합니다.
-				<pre class="brush:js">
-					dk.random(); // 0 ~ 1
-					dk.random( $max ); // 0 ~ $max
-					dk.random( $max, $min ); // $min ~ $max
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.randomInt</h3>
-			<div>
-				$max와 $min 사이의 랜덤 정수를 반환합니다<br>
-				앞의 숫자가 큰 숫자 입니다. $min 생략시 0 ~ $max 사이의 램덤 숫자를 반환합니다. 둘다 생략은 불가능 합니다.
-				<pre class="brush:js">
-					dk.randomInt( $max ); // 0 ~ $max
-					dk.randomInt( $max, $min ); // $min ~ $max
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.randomColor</h3>
-			<div>
-				rgb(255, 255, 255) 사이의 랜덤 컬러값을 반환합니다
-				<pre class="brush:js">
-					dk.randomColor();
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.timeCheck</h3>
-			<div>
-				dk.timeCheck() 실행시점과 다음 dk.timeCheck() 실행시점 사이의 시간을 반환합니다. Date.now()로 체크합니다.
-				<pre class="brush:js">
-					dk.timeCheck(); // null
-					dk.timeCheck(); // 숫자
-					dk.timeCheck(); // null
-					dk.timeCheck(); // 숫자
-				</pre>
-			</div>
-		</div>
-	</div>
-
-	<div class="content" id="Loader">
-		<div class="hr2"></div>
-		<h2>Loader</h2>
-
-		<div>
-			AJAX, JS, IMG 로더를 지원합니다
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.ajax</h3>
-			<div>
-				ajax 통신을 지원합니다.<br>
-				get 방식의 통신만 지원합니다.<br>
-				url과 필요할경우 매개변수를 추가해 호출할 수 있습니다.<br>
-				로드 에러 및 타임아웃 (5000) 시 $data에 null이 넘어옵니다.
-				<pre class="brush:js">
-					dk.ajax( $cb, $url/*, paramK, paramV...*/ );
-
-					dk.ajax( function( $data, $status ){
-					}, 'data.txt' );
-
-					dk.ajax( function( $data, $status ){
-						if( $data ){
-							var data = dk.JSON.parse( $data );
-						}
-					}, 'data.json', 'k', 'v' ); // data.json?k=v
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.js</h3>
-			<div>
-				javascript 파일 로더를 지원합니다. 비동기로 작동됩니다.<br>
-				콜백 함수 뒤 로드하고자 하는 url, 또는 url 배열 입력 시, 순차적으로 로드 합니다. 모든 파일이 로드 되면 콜백함수를 호출합니다.
-				<pre class="brush:js">
-					dk.js( $cb, $url/* , [], $url */ )
-
-					dk.js( function(){
-					}, 'data.js' );
-
-					dk.js( function(){
-					}, 'data1.js', [ 'data2.js', 'data3.js' ], 'data4.js' );
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.img</h3>
-			<div>
-				이미지 파일 로더를 지원합니다. 프리로더로 사용 가능합니다.<br>
-				콜백 함수 뒤 로드하고자 하는 url 입력 시, 순차적으로 로드 합니다. 모든 파일이 로드 되면 콜백함수를 호출되며 입력한 url순의 img element 배열을 리턴합니다.<br>
-				로드 에러 시 false를 리턴합니다. ( // todo ie8 확인필요)
-				<pre class="brush:js">
-					dk.img( $cb, $src/* ,$src, $src */ )
-
-					dk.img( function( $arr ){
-						log( $arr[ 0 ] );
-					}, 'data.jpg' );
-
-					dk.img( function( $arr ){
-						log( $arr );
-					}, 'data1.jpg', 'data2.jpg',  [ 'data3.jpg', 'data4.jpg' ], 'data5.jpg' );
-				</pre>
-			</div>
-		</div>
-	</div>
-
-	<div class="content" id="Sheet">
-		<div class="hr2"></div>
-		<h2>dk.Sheet - Sprite Sheet</h2>
-
-		<div>
-			Sprite Sheet는 여러 개의 작은 그래픽을 바둑판식 격자 배열로 포함하고 있는 비트맵 이미지 파일입니다.<br>
-			여러 그래픽을 단일 파일로 사용함으로써 Animate 및 모바일 버튼 등의 활용에서 한 파일만 로드하여 그래픽을 사용할 수 있도록 합니다.
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>Sprite Sheet 객체 생성 - dk.Sheet 객체</h3>
-			<div>
-				dk.Sheet 메서드는 Sprite Sheet 이미지와 데이터 파일을 로드하여 Sprite Sheet 객체를 반환하는 메서드 입니다.<br>
-				dk.Dom을 확장하여 구현되어 있습니다.
-				<pre class="brush:js">
-				dk.Sheet( $cb, $img, $json/*, $framerate*/ );
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.Sheet().S()</h3>
-			<div>
-				dk.Dom을 확장하여 사용하기 때문에 dk.Dom의 모든 매서드를 사용할 수 있습니다.
-				<pre class="brush:js">
-					dk.Sheet( function(){}, 'asset/box.png', 'asset/box.json' ).S( 'position', 'absolute', '<', 'body' );
-				</pre>
-			</div>
-		</div>
-
-		<div>
-			<div class="hr3"></div>
-			<h3>dk.Sheet().S2()</h3>
-			<div>
-				dk.Sheet의 개별 매서드들은 S2 매서드를 통해 사용할 수 있습니다.
-				<pre class="brush:js">
-					var sheet = dk.Sheet( function( $sheet ){}, 'asset/box.png', 'asset/box.json' );
-
-					// 반복 재생
-					sheet.S2( 'repeat' );
-
-					// 1회 재생
-					sheet.S2( 'play' );
-
-					// 정지
-					sheet.S2( 'stop' );
-
-					// 뒤로 재생
-					sheet.S2( 'rewind' );
-
-					// 해당 프레임 이동 후 정지
-					sheet.S2( 'gotoAndStop', frame );
-
-					// 해당 프레임 이동 후 1회 재생
-					sheet.S2( 'gotoAndPlay', frame );
-
-					// 구간 반복
-					sheet.S2( 'abRepeat', frame1, frame2 );
-				</pre>
-			</div>
-		</div>
-	</div>
-
-</div>
 </body>
 </html>
