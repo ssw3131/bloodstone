@@ -36,7 +36,7 @@
 		},
 
 		// INFO :
-		dk.makeStatic( 'INFO', { name: 'Dk bloodstone', version: 'v0.0.1', github: 'https://github.com/ssw3131/bloodstone.git' } ),
+		dk.makeStatic( 'INFO', { name: 'dk bloodstone', version: 'v0.0.1', github: 'https://github.com/ssw3131/bloodstone' } ),
 
 		// ERROR :
 		dk.makeFunction( 'err', function( v ) {

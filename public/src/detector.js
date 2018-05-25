@@ -137,7 +137,6 @@ dk.makeStatic( 'DETECTOR', ( function( w, doc ) {
 		textContent: 'textContent' in d ? true : false,
 		touchBool: 'ontouchstart' in w ? true : false,
 		currentTarget: browser == 'firefox' ? 'target' : 'srcElement',
-		wheelEvent: browser == 'firefox' ? 'DOMMouseScroll' : 'mousewheel',
-		isLocalhost: location.host.indexOf( 'localhost' ) < 0 ? false : true
+		wheelEvent: browser == 'firefox' ? 'DOMMouseScroll' : 'mousewheel'
 	}
 } )( dk.W, dk.DOC ) );

@@ -36,7 +36,7 @@
 		},
 
 		// INFO :
-		dk.makeStatic( 'INFO', { name: 'Dk bloodstone', version: 'v0.0.1', github: 'https://github.com/ssw3131/bloodstone.git' } ),
+		dk.makeStatic( 'INFO', { name: 'dk bloodstone', version: 'v0.0.1', github: 'https://github.com/ssw3131/bloodstone' } ),
 
 		// ERROR :
 		dk.makeFunction( 'err', function( v ) {
@@ -194,8 +194,7 @@ dk.makeStatic( 'DETECTOR', ( function( w, doc ) {
 		textContent: 'textContent' in d ? true : false,
 		touchBool: 'ontouchstart' in w ? true : false,
 		currentTarget: browser == 'firefox' ? 'target' : 'srcElement',
-		wheelEvent: browser == 'firefox' ? 'DOMMouseScroll' : 'mousewheel',
-		isLocalhost: location.host.indexOf( 'localhost' ) < 0 ? false : true
+		wheelEvent: browser == 'firefox' ? 'DOMMouseScroll' : 'mousewheel'
 	}
 } )( dk.W, dk.DOC ) );
 

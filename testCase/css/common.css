@@ -1,24 +1,23 @@
 /*import-----------------------------------------------------------------------------------*/
 
-/* @import url('font.css'); */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 /*basic-----------------------------------------------------------------------------------*/
 
 body,
 html {
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 1.6;
   color: #222222;
-  font-family: 'NanumSquare', Dotum, sans-serif;
+  font-family: 'Noto Sans KR', Dotum, sans-serif;
 }
-html {
-  height: 100%;
+body {
+  background-color: #eceef4;
 }
-body {}
 a:active,
 a:link,
 a:visited {
-  color: #222222;
+  color: #808081;
   text-decoration: none;
 }
 a:hover {
@@ -38,12 +37,60 @@ img {
   clear: both;
   visibility: hidden;
 }
-.bt_alpha {
-  display: block;
-  position: absolute;
-  background: url('/resources/img/common/bt_alpha.png') rgba(0, 0, 0, 0);
+
+#wrap {
+  max-width: 1000px;
+  min-width: 250px;
+  padding: 30px;
+  margin: 30px auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
-.wrap_center {
-  width: 1200px;
-  margin: 0 auto;
+.content {
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 10px #aaa;
+  border-radius: 4;
+}
+.content:before {
+  content: '';
+  display: block;
+  margin: 10px 0 20px;
+  border-top: 1px solid #aaa;
+}
+.sub:before {
+  content: '';
+  display: block;
+  margin: 30px 0 14px;
+  border-top: 1px dashed #bbb;
+}
+.option {
+  margin-left: 20px;
+}
+.option:before {
+  content: '';
+  display: block;
+  margin: 14px 0 14px;
+  border-top: 1px dashed #ddd;
+}
+h1 {
+  margin-bottom: 16px;
+  color: #444444;
+  font-size: 24px;
+}
+h2 {
+  margin-bottom: 14px;
+  color: #1a99aa;
+  font-size: 18px;
+}
+h3 {
+  margin-top: 14px;
+  color: #1a99aa;
+  font-size: 14px;
+}
+h4 {
+  margin-top: 14px;
+  color: #1a99aa;
+  font-size: 13px;
 }
