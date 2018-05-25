@@ -1,0 +1,49 @@
+/*import-----------------------------------------------------------------------------------*/
+
+/* @import url('font.css'); */
+
+/*basic-----------------------------------------------------------------------------------*/
+
+body,
+html {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #222222;
+  font-family: 'NanumSquare', Dotum, sans-serif;
+}
+html {
+  height: 100%;
+}
+body {}
+a:active,
+a:link,
+a:visited {
+  color: #222222;
+  text-decoration: none;
+}
+a:hover {
+  color: #000;
+  text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+}
+img {
+  vertical-align: top;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.bt_alpha {
+  display: block;
+  position: absolute;
+  background: url('/resources/img/common/bt_alpha.png') rgba(0, 0, 0, 0);
+}
+.wrap_center {
+  width: 1200px;
+  margin: 0 auto;
+}
