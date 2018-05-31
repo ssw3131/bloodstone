@@ -1,6 +1,6 @@
 /*import-----------------------------------------------------------------------------------*/
 
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
 /*basic-----------------------------------------------------------------------------------*/
 
@@ -9,7 +9,7 @@ html {
   font-size: 12px;
   line-height: 1.6;
   color: #222222;
-  font-family: 'Noto Sans KR', Dotum, sans-serif;
+  font-family: 'Noto Sans', Dotum, sans-serif;
 }
 body {
   background-color: #eceef4;
@@ -51,7 +51,7 @@ img {
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0px 0px 10px #aaa;
-  border-radius: 4;
+  border-radius: 4px;
 }
 .content:before {
   content: '';
