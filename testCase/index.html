@@ -59,11 +59,11 @@
 				<ul>
 					<li><a href="#Download">Download</a></li>
 					<li><a href="#Installation">Installation</a></li>
-					<li><a href="#INFO">INFO</a></li>
-					<li><a href="#isDebug">isDebug</a></li>
-					<li><a href="#DETECTOR">DETECTOR</a></li>
+					<li><a href="#INFO">dk.INFO</a></li>
+					<li><a href="#isDebug">dk.isDebug</a></li>
+					<li><a href="#DETECTOR">dk.DETECTOR</a></li>
 					<li><a href="#UTIL">UTIL</a></li>
-					<li><a href="#ListManager">ListManager</a></li>
+					<li><a href="#ListManager">dk.ListManager</a></li>
 				</ul>
 			</div>
 		</div>
@@ -91,8 +91,22 @@
 		<div class="content" id="INFO">
 			<h2><button type="button">dk.INFO</button></h2>
 			<div class="content_sub">
+				<p>Type : Object</p>
 				<p>dk information</p>
 				<p>bloodstone은 jquery 기반 위에서 작동됩니다.</p>
+
+				<div class="sub">
+					<h3>name</h3>
+					<p>Type : String</p>
+				</div>
+				<div class="sub">
+					<h3>version</h3>
+					<p>Type : String</p>
+				</div>
+				<div class="sub">
+					<h3>github</h3>
+					<p>Type : String</p>
+				</div>
 				<pre class="brush:js">
 					dk.INFO;
 				</pre>
@@ -115,8 +129,29 @@
 		<div class="content" id="isDebug">
 			<h2><button type="button">dk.isDebug / log</button></h2>
 			<div class="content_sub">
-				<p>개발 작업 시 debug 모드를 활성화 해서 개발합니다. isDebug 가 true 일 경우에만 log 함수가 작동 됩니다.</p>
-				<p>log 함수는 console.log를 대체합니다.<br>log 함수에 첫번째 파라미터가 'debug' 일 경우 debugger; 중단점이 실행됩니다.</p>
+				<div class="sub">
+					<h3>dk.isDebug( bool )</h3>
+					<p>개발 작업 시 debug 모드를 활성화 해서 개발합니다. isDebug 가 true 일 경우에만 log 함수가 작동 됩니다.</p>
+					<div class="arguments">
+						<h4>bool</h4>
+						<p>Type : Boolean</p>
+						<p>필수</p>
+					</div>
+				</div>
+				<div class="sub">
+					<h3>log( [ debug, ] msg )</h3>
+					<p>log 함수는 console.log를 대체합니다.<br>log 함수에 첫번째 파라미터가 'debug' 일 경우 debugger; 중단점이 실행됩니다.</p>
+					<div class="arguments">
+						<h4>debug</h4>
+						<p>Type : String</p>
+						<p>'debug'</p>
+						<p>선택</p>
+					</div>
+					<div class="arguments">
+						<h4>msg</h4>
+						<p>Type : String</p>
+					</div>
+				</div>
 				<pre class="brush:js">
 					dk.isDebug( true );
 					log( 'hi' );
@@ -129,7 +164,13 @@
 		<div class="content" id="DETECTOR">
 			<h2><button type="button">dk.DETECTOR</button></h2>
 			<div class="content_sub">
+				<p>Type : Object</p>
 				<p>Detector를 통해서 데스크탑, 모바일, 브라우저, 객체 탐지 등을 미리 파악할 수 있습니다.</p>
+				<div class="sub">
+					<h3>Property</h3>
+					<p>device, os, osVer, browser, browserVer, ie8, mobile, flash, prefixCss, prefixStyle, transform3D, transform, transition, keyframe, float, canvas, canvasText, audio, video, videoPoster, videoWebm, videoH264, videoTeora, insertBefore, innerText, textContent,
+						touchBool, currentTarget, wheelEvent</p>
+				</div>
 				<pre class="brush:js">
 					dk.DETECTOR;
 				</pre>
@@ -161,8 +202,19 @@
 				<p>유틸리티 함수들</p>
 
 				<div class="sub">
-					<h3>random</h3>
-					<p>특정범위 내에 랜덤숫자를 반환합니다.<br>max 기본값 : 1, min 기본값 : 0</p>
+					<h3>dk.random( [max, min] )</h3>
+					<p>Return : Number</p>
+					<p>특정범위 내에 랜덤숫자를 반환합니다.</p>
+					<div class="arguments">
+						<h4>max ( default : 1 )</h4>
+						<p>Type : Number</p>
+						<p>선택</p>
+					</div>
+					<div class="arguments">
+						<h4>min ( default : 0 )</h4>
+						<p>Type : Number</p>
+						<p>선택</p>
+					</div>
 					<pre class="brush:js">
 						// min ~ max
 						dk.random( max, min );
@@ -176,8 +228,19 @@
 				</div>
 				<!-- //sub -->
 				<div class="sub">
-					<h3>randomInt</h3>
-					<p>특정범위 내에 랜덤정수를 반환합니다.<br>min 기본값 : 0</p>
+					<h3>dk.randomInt( max [, min] )</h3>
+					<p>Return : int</p>
+					<p>특정범위 내에 랜덤정수를 반환합니다.</p>
+					<div class="arguments">
+						<h4>max</h4>
+						<p>Type : Number</p>
+						<p>필수</p>
+					</div>
+					<div class="arguments">
+						<h4>min ( default : 0 )</h4>
+						<p>Type : Number</p>
+						<p>선택</p>
+					</div>
 					<pre class="brush:js">
 						// min ~ max
 						dk.randomInt( max, min );
@@ -188,15 +251,18 @@
 				</div>
 				<!-- //sub -->
 				<div class="sub">
-					<h3>randomColor</h3>
-					<p>랜덤 컬러값을 반환합니다.</p>
+					<h3>dk.randomColor()</h3>
+					<p>Return : String</p>
+					<p>rgb() 형태의 랜덤 컬러값을 반환합니다.</p>
 					<pre class="brush:js">
 						dk.randomColor();
+						// rgb(243, 187, 205)
 					</pre>
 				</div>
 				<!-- //sub -->
 				<div class="sub">
-					<h3>timeCheck</h3>
+					<h3>dk.timeCheck()</h3>
+					<p>Return : Number</p>
 					<p>timeCheck 함수 실행 사이의 시간을 반환합니다.</p>
 					<pre class="brush:js">
 						dk.timeCheck();
@@ -206,7 +272,8 @@
 				</div>
 				<!-- //sub -->
 				<div class="sub">
-					<h3>parseLocation</h3>
+					<h3>dk.parseLocation()</h3>
+					<p>Return : Object</p>
 					<p>location.search의 문자열을 & 문자열로 나눠 오브젝트에 key, value 값으로 저장해 반환합니다.</p>
 					<pre class="brush:js">
 						// index.html?a=1&b=2;
@@ -220,8 +287,9 @@
 		<!-- //content -->
 
 		<div class="content" id="ListManager">
-			<h2><button type="button">dk.ListManager</button></h2>
+			<h2><button type="button">dk.ListManager( leng, act [, option] )</button></h2>
 			<div class="content_sub">
+				<p>Return : ListManager</p>
 				<p>리스트의 length 값을 받아 리스트 안의 활성화 id 값을 관리합니다.</p>
 				<p>활성화 id 값을 바꾸고 현재 id와 이전 id 값을 제공합니다. autoPlay 기능을 제공합니다.</p>
 				<p>배열의 id, 슬라이드의 id, 버튼리스트의 id 등에 활용 가능합니다.</p>
@@ -233,8 +301,6 @@
 					* @param	: option - initId, infinity, autoPlay, autoPlaySpeed
 					*/
 					dk.ListManager( leng, act, option );
-
-
 				</pre>
 				<pre class="brush:js">
 					dk.ListManager( 4, function( id, oldId, directon ){}, {
@@ -243,45 +309,55 @@
 						autoPlay: false,
 						autoPlaySpeed: 4
 					} );
-
 				</pre>
 				<div class="sub">
 					<h3>leng</h3>
 					<p>Type : int</p>
-					<p>leng 은 필수항목 입니다.</p>
+					<p>필수</p>
 					<p>leng 이 없거나 0 이면 안됩니다.</p>
 				</div>
 				<!-- //sub -->
 				<div class="sub">
-					<h3>act</h3>
-					<p>Type : function</p>
-					<p>act 는 필수항목 입니다.</p>
+					<h3>act( id, oldId, directon ){ }</h3>
+					<p>Type : Function</p>
+					<p>필수</p>
 					<p>활성화 id 값이 바뀔때 실행될 리스너 함수입니다.</p>
+					<div class="parameter">
+						<h4>id</h4>
+						<p>Type : int</p>
+					</div>
+					<div class="parameter">
+						<h4>oldId</h4>
+						<p>Type : int</p>
+					</div>
+					<div class="parameter">
+						<h4>directon</h4>
+						<p>Type : String</p>
+						<p>'next' or 'prev'</p>
+					</div>
 				</div>
 				<!-- //sub -->
 				<div class="sub">
 					<h3>Option</h3>
+					<p>선택</p>
 					<div class="option">
-						<h4>initId</h4>
+						<h4>initId ( default : 0 )</h4>
 						<p>Type : int</p>
 						<p>초기 설정 될 id 값</p>
 					</div>
 					<div class="option">
-						<h4>infinity</h4>
+						<h4>infinity ( default : true )</h4>
 						<p>Type : boolean</p>
-						<p>Default : true</p>
 						<p>autoPlay 시 무한반복 설정</p>
 					</div>
 					<div class="option">
-						<h4>autoPlay</h4>
+						<h4>autoPlay ( default : false )</h4>
 						<p>Type : boolean</p>
-						<p>Default : false</p>
 						<p>autoPlay 설정</p>
 					</div>
 					<div class="option">
-						<h4>autoPlaySpeed</h4>
-						<p>Type : number</p>
-						<p>Default : 4</p>
+						<h4>autoPlaySpeed ( default : 4 )</h4>
+						<p>Type : Number</p>
 						<p>autoPlay 시간 설정 (초)</p>
 					</div>
 				</div>
@@ -298,7 +374,8 @@
 					</div>
 					<div class="method">
 						<h4>getId()</h4>
-						<p>return : { id, oldId }</p>
+						<p>Return : Object</p>
+						<p>// { id, oldId }</p>
 						<p>id (현재 활성화 id)와 oldId (이전 id) 를 반환합니다.</p>
 						<pre class="brush:js">
 							var lm = dk.ListManager( leng, act, option );
@@ -307,12 +384,20 @@
 						</pre>
 					</div>
 					<div class="method">
-						<h4>act( id )</h4>
-						<h4>act( id, [directon] )</h4>
-						<p>Arguments - id:int</p>
-						<p>Arguments - directon:string ('next' or 'prev') / 선택적</p>
+						<h4>act( id [, directon] )</h4>
 						<p>현재 활성화 id를 지정합니다.</p>
 						<p>이전 id 대비 이동 방향을 고정 시킬 수 있습니다. 'next' or 'prev'</p>
+						<div class="arguments">
+							<h4>id</h4>
+							<p>Type : int</p>
+							<p>필수</p>
+						</div>
+						<div class="arguments">
+							<h4>directon</h4>
+							<p>Type : String</p>
+							<p>'next' or 'prev'</p>
+							<p>선택</p>
+						</div>
 						<pre class="brush:js">
 							var lm = dk.ListManager( leng, act, option );
 							lm.act( 2 );
