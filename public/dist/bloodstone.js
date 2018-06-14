@@ -40,7 +40,7 @@
 
 		// ERROR :
 		dk.makeFunction( 'err', function( v ) {
-			throw 'dk error : ' + v;
+			throw new Error( 'dk error : ' + v );
 			// log( 'dk error : ' + v );
 		} ),
 
