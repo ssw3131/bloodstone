@@ -483,7 +483,7 @@
 					 * @param	: act - 버튼 클릭 시 활성화 함수
 					 * @param	: option - btAct, freezeTime, ListManager 동일 (initId, infinity, autoPlay, autoPlaySpeed)
 					 */
-					BtManager = function( $bts, act, option );
+					dk.BtManager( $bts, act, option );
 				</pre>
 				<pre class="brush:js">
 					dk.BtManager( $('li.bts'), function( id, oldId, directon ){}, {
@@ -682,7 +682,7 @@
 					 * @param	: $tabCon - tab content 제이쿼리
 					 * @param	: option - motionTime, BtManager 동일 (btAct, freezeTime, initId, infinity, autoPlay, autoPlaySpeed)
 					 */
-					Tab = function( $tab, $tabCon, option );
+					dk.Tab( $tab, $tabCon, option );
 				</pre>
 				<pre class="brush:js">
 					dk.Tab( $('li.tab'), $('li.tabCon'), {
@@ -881,7 +881,7 @@
 					 * @param	: $slide - slide 제이쿼리
 					 * @param	: option - $dot, $arrow, onAct, touch, motionType, freezeTime, motionTime, motionDelay, motionEaseAct, motionEaseOld, ListManager 동일 (initId, infinity, autoPlay, autoPlaySpeed)
 					 */
-					Slider = function( $slide, option );
+					dk.Slider( $slide, option );
 				</pre>
 				<pre class="brush:js">
 					var slider = dk.Slider( $( 'ul.slider' ), {
