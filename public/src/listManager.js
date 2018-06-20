@@ -201,9 +201,9 @@ dk.makeClass( 'BtManager', ( function() {
 		return this._ListManager.getId();
 	};
 
-	fn.act = function( id ) {
+	fn.act = function( id, directon ) {
 		if( this._isMove ) return;
-		this._ListManager.act( id );
+		this._ListManager.act( id, directon );
 	};
 
 	fn.next = function() {
@@ -276,7 +276,7 @@ dk.makeClass( 'Tab', ( function() {
 	 * @class	: Tab
 	 * @param	: $tab - tab 제이쿼리
 	 * @param	: $tabCon - tab content 제이쿼리
-	 * @param	: option - motionTime, BtManager 동일 (btAct, freezeTime, initId, infinity, autoPlay, autoPlaySpeed)
+	 * @param	: option - motionTime, BtManager 동일 (act, btAct, freezeTime, initId, infinity, autoPlay, autoPlaySpeed)
 	 */
 	Tab = function( $tab, $tabCon, option ) {
 		if( $tab.length == 0 ) return dk.err( 'Tab : $tab 는 필수항목 입니다' );
@@ -290,15 +290,21 @@ dk.makeClass( 'Tab', ( function() {
 		$.extend( this._option, option );
 
 		var _act = ( function( self ) {
-			TweenLite.set( self._$tabCon, { 'display': 'none', 'opacity': 0 } );
-			return function( id, oldId ) {
-				var $oldCon = $tabCon.eq( oldId );
-				var $actCon = $tabCon.eq( id );
-				TweenLite.killTweensOf( $oldCon );
-				TweenLite.set( $oldCon, { 'display': 'none', 'opacity': 0 } );
-				TweenLite.killTweensOf( $actCon );
-				TweenLite.set( $actCon, { 'display': 'block' } );
-				TweenLite.to( $actCon, self._option.motionTime, { opacity: 1, ease: Power2.easeOut } );
+			if( self._option.act === undefined ) {
+				TweenLite.set( self._$tabCon, { 'display': 'none', 'opacity': 0 } );
+				return function( id, oldId ) {
+					var $oldCon = $tabCon.eq( oldId );
+					var $actCon = $tabCon.eq( id );
+					TweenLite.killTweensOf( $oldCon );
+					TweenLite.set( $oldCon, { 'display': 'none', 'opacity': 0 } );
+					TweenLite.killTweensOf( $actCon );
+					TweenLite.set( $actCon, { 'display': 'block' } );
+					TweenLite.to( $actCon, self._option.motionTime, { opacity: 1, ease: Power2.easeOut } );
+				}
+			} else {
+				return function( id, oldId, directon ) {
+					self._option.act.call( self, id, oldId, directon );
+				};
 			}
 		} )( this );
 
@@ -317,8 +323,8 @@ dk.makeClass( 'Tab', ( function() {
 		return this._BtManager.getId();
 	};
 
-	fn.act = function( id ) {
-		this._BtManager.act( id );
+	fn.act = function( id, directon ) {
+		this._BtManager.act( id, directon );
 	};
 
 	fn.next = function() {
@@ -401,7 +407,7 @@ dk.makeClass( 'Slider', ( function() {
 	fn = Slider.prototype;
 
 	_defaultOption = function( type ) {
-		var basicOption = { $dot: undefined, $arrow: undefined, onAct: undefined, infinity: true, autoPlay: true, autoPlaySpeed: 4, touch: false };
+		var basicOption = { $dot: undefined, $arrow: undefined, onAct: undefined, touch: false, infinity: true, autoPlay: true, autoPlaySpeed: 4 };
 		var motionOption;
 		switch( type ) {
 			case 'fixed':
@@ -497,9 +503,9 @@ dk.makeClass( 'Slider', ( function() {
 		return this._ListManager.getId();
 	};
 
-	fn.act = function( id ) {
+	fn.act = function( id, directon ) {
 		if( this._isMove ) return;
-		this._ListManager.act( id );
+		this._ListManager.act( id, directon );
 	};
 
 	fn.next = function() {
