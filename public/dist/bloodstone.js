@@ -389,7 +389,7 @@ dk.makeClass( 'ListManager', ( function() {
 // BtManager :
 dk.makeClass( 'BtManager', ( function() {
 	var factory, BtManager, fn;
-	var _addEvent, _delEvent;
+	var _addEvent, _delEvent, _connect0, _connect1;
 
 	/**
 	 * @class	: BtManager
@@ -442,6 +442,33 @@ dk.makeClass( 'BtManager', ( function() {
 	};
 	fn = BtManager.prototype;
 
+	_connect0 = function(){
+		var i = arguments.length;
+		var name;
+		while ( i-- ) {
+			name = arguments[ i ];
+			fn[ name ] = (function( name ){
+				return function(){
+					return this._ListManager[ name ].apply( this._ListManager, arguments );
+				};
+			})( name );
+		}
+	};
+
+	_connect1 = function(){
+		var i = arguments.length;
+		var name;
+		while ( i-- ) {
+			name = arguments[ i ];
+			fn[ name ] = (function( name ){
+				return function(){
+					if( this._isMove ) return;
+					return this._ListManager[ name ].apply( this._ListManager, arguments );
+				};
+			})( name );
+		}
+	};
+
 	fn.destroy = function() {
 		_delEvent.call( this );
 		this._ListManager.destroy();
@@ -452,40 +479,9 @@ dk.makeClass( 'BtManager', ( function() {
 		this._$bts = null;
 	};
 
-	fn.getId = function() {
-		return this._ListManager.getId();
-	};
+	_connect0( 'getId', 'play', 'stop', 'pause', 'resetTimer' );
 
-	fn.act = function( id, directon ) {
-		if( this._isMove ) return;
-		this._ListManager.act( id, directon );
-	};
-
-	fn.next = function() {
-		if( this._isMove ) return;
-		this._ListManager.next();
-	};
-
-	fn.prev = function() {
-		if( this._isMove ) return;
-		this._ListManager.prev();
-	};
-
-	fn.play = function() {
-		this._ListManager.play();
-	};
-
-	fn.stop = function() {
-		this._ListManager.stop();
-	};
-
-	fn.pause = function() {
-		this._ListManager.pause();
-	};
-
-	fn.resetTimer = function() {
-		this._ListManager.resetTimer();
-	};
+	_connect1( 'act', 'next', 'prev' );
 
 	_addEvent = function() {
 		var self = this,
@@ -526,6 +522,7 @@ dk.makeClass( 'BtManager', ( function() {
 // Tab :
 dk.makeClass( 'Tab', ( function() {
 	var factory, Tab, fn;
+	var _connect0;
 
 	/**
 	 * @class	: Tab
@@ -567,6 +564,19 @@ dk.makeClass( 'Tab', ( function() {
 	};
 	fn = Tab.prototype;
 
+	_connect0 = function(){
+		var i = arguments.length;
+		var name;
+		while ( i-- ) {
+			name = arguments[ i ];
+			fn[ name ] = (function( name ){
+				return function(){
+					return this._BtManager[ name ].apply( this._BtManager, arguments );
+				};
+			})( name );
+		}
+	};
+
 	fn.destroy = function() {
 		this._BtManager.destroy();
 		this._option = null;
@@ -574,37 +584,7 @@ dk.makeClass( 'Tab', ( function() {
 		this._$tab = null;
 	};
 
-	fn.getId = function() {
-		return this._BtManager.getId();
-	};
-
-	fn.act = function( id, directon ) {
-		this._BtManager.act( id, directon );
-	};
-
-	fn.next = function() {
-		this._BtManager.next();
-	};
-
-	fn.prev = function() {
-		this._BtManager.prev();
-	};
-
-	fn.play = function() {
-		this._BtManager.play();
-	};
-
-	fn.stop = function() {
-		this._BtManager.stop();
-	};
-
-	fn.pause = function() {
-		this._BtManager.pause();
-	};
-
-	fn.resetTimer = function() {
-		this._BtManager.resetTimer();
-	};
+	_connect0( 'getId', 'act', 'next', 'prev', 'play', 'stop', 'pause', 'resetTimer' );
 
 	factory = function( $tab, $tabCon, option ) {
 		return new Tab( $tab, $tabCon, option );
@@ -615,7 +595,7 @@ dk.makeClass( 'Tab', ( function() {
 // Slider :
 dk.makeClass( 'Slider', ( function() {
 	var factory, Slider, fn;
-	var _defaultOption, _addTouchEvent, _delTouchEvent;
+	var _defaultOption, _addTouchEvent, _delTouchEvent, _connect0, _connect1;
 	var Slide, Dot, Arrow;
 
 	/**
@@ -733,6 +713,33 @@ dk.makeClass( 'Slider', ( function() {
 		this._$slideUl.swipe( 'destroy' );
 	};
 
+	_connect0 = function(){
+		var i = arguments.length;
+		var name;
+		while ( i-- ) {
+			name = arguments[ i ];
+			fn[ name ] = (function( name ){
+				return function(){
+					return this._ListManager[ name ].apply( this._ListManager, arguments );
+				};
+			})( name );
+		}
+	};
+
+	_connect1 = function(){
+		var i = arguments.length;
+		var name;
+		while ( i-- ) {
+			name = arguments[ i ];
+			fn[ name ] = (function( name ){
+				return function(){
+					if( this._isMove ) return;
+					return this._ListManager[ name ].apply( this._ListManager, arguments );
+				};
+			})( name );
+		}
+	};
+
 	fn.destroy = function() {
 		if( this._option.touch ) _delTouchEvent.call( this );
 		this._ListManager.destroy();
@@ -754,40 +761,9 @@ dk.makeClass( 'Slider', ( function() {
 		this._$slideUl = null;
 	};
 
-	fn.getId = function() {
-		return this._ListManager.getId();
-	};
+	_connect0( 'getId', 'play', 'stop', 'pause', 'resetTimer' );
 
-	fn.act = function( id, directon ) {
-		if( this._isMove ) return;
-		this._ListManager.act( id, directon );
-	};
-
-	fn.next = function() {
-		if( this._isMove ) return;
-		this._ListManager.next();
-	};
-
-	fn.prev = function() {
-		if( this._isMove ) return;
-		this._ListManager.prev();
-	};
-
-	fn.play = function() {
-		this._ListManager.play();
-	};
-
-	fn.stop = function() {
-		this._ListManager.stop();
-	};
-
-	fn.pause = function() {
-		this._ListManager.pause();
-	};
-
-	fn.resetTimer = function() {
-		this._ListManager.resetTimer();
-	};
+	_connect1( 'act', 'next', 'prev' );
 
 	factory = function( $slide, option ) {
 		return new Slider( $slide, option );

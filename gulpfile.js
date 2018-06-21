@@ -19,6 +19,12 @@ gulp.task( "combine", function() {
 		.pipe( gulp.dest( dist ) );
 } );
 
+// watch 변화감지
+gulp.task( 'watch', _ => {
+	gulp.watch( src + '*.js', [ 'combine' ] );
+} );
+
 gulp.task( 'default', [
-	'combine'
+	'combine',
+	'watch'
 ] );
