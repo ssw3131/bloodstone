@@ -33,9 +33,11 @@
 				bt: $('h2>button'),
 				sub: $('.content_sub'),
 			};
-			$sel.indexA.on('click', function(e) {
-				var id = $(this).parent().index();
-				$sel.sub.eq(id).show();
+			$sel.indexA.each(function(i) {
+				var $this = $(this);
+				$this.on('click', function(e) {
+					$sel.sub.eq(i).show();
+				});
 			});
 			$sel.bt.each(function(i) {
 				var $this = $(this);

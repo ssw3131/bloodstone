@@ -187,30 +187,30 @@ dk.makeClass( 'BtManager', ( function() {
 	};
 	fn = BtManager.prototype;
 
-	_connect0 = function(){
+	_connect0 = function() {
 		var i = arguments.length;
 		var name;
-		while ( i-- ) {
+		while( i-- ) {
 			name = arguments[ i ];
-			fn[ name ] = (function( name ){
-				return function(){
+			fn[ name ] = ( function( name ) {
+				return function() {
 					return this._ListManager[ name ].apply( this._ListManager, arguments );
 				};
-			})( name );
+			} )( name );
 		}
 	};
 
-	_connect1 = function(){
+	_connect1 = function() {
 		var i = arguments.length;
 		var name;
-		while ( i-- ) {
+		while( i-- ) {
 			name = arguments[ i ];
-			fn[ name ] = (function( name ){
-				return function(){
+			fn[ name ] = ( function( name ) {
+				return function() {
 					if( this._isMove ) return;
 					return this._ListManager[ name ].apply( this._ListManager, arguments );
 				};
-			})( name );
+			} )( name );
 		}
 	};
 
@@ -232,24 +232,25 @@ dk.makeClass( 'BtManager', ( function() {
 		var self = this,
 			$a = this._$bts.find( '>a' ),
 			timer;
-		$a.on( 'mouseenter', function() {
-			self.pause();
-			clearTimeout( timer );
-			var id = $( this ).parent().index();
-			self._btAct( id );
-		} );
-		$a.on( 'mouseleave', function() {
-			self.resetTimer();
-			timer = setTimeout( function() {
-				var id = self.getId().id;
-				self._btAct( id );
-			}, 300 );
-		} );
-		$a.on( 'click', function( e ) {
-			e.preventDefault();
-			if( self._isMove ) return;
-			var id = $( this ).parent().index();
-			self.act( id );
+		$a.each( function( i ) {
+			var $this = $( this );
+			$this.on( 'mouseenter', function() {
+				self.pause();
+				clearTimeout( timer );
+				self._btAct( i );
+			} );
+			$this.on( 'mouseleave', function() {
+				self.resetTimer();
+				timer = setTimeout( function() {
+					var id = self.getId().id;
+					self._btAct( id );
+				}, 300 );
+			} );
+			$this.on( 'click', function( e ) {
+				e.preventDefault();
+				if( self._isMove ) return;
+				self.act( i );
+			} );
 		} );
 	};
 
@@ -309,16 +310,16 @@ dk.makeClass( 'Tab', ( function() {
 	};
 	fn = Tab.prototype;
 
-	_connect0 = function(){
+	_connect0 = function() {
 		var i = arguments.length;
 		var name;
-		while ( i-- ) {
+		while( i-- ) {
 			name = arguments[ i ];
-			fn[ name ] = (function( name ){
-				return function(){
+			fn[ name ] = ( function( name ) {
+				return function() {
 					return this._BtManager[ name ].apply( this._BtManager, arguments );
 				};
-			})( name );
+			} )( name );
 		}
 	};
 
@@ -458,30 +459,30 @@ dk.makeClass( 'Slider', ( function() {
 		this._$slideUl.swipe( 'destroy' );
 	};
 
-	_connect0 = function(){
+	_connect0 = function() {
 		var i = arguments.length;
 		var name;
-		while ( i-- ) {
+		while( i-- ) {
 			name = arguments[ i ];
-			fn[ name ] = (function( name ){
-				return function(){
+			fn[ name ] = ( function( name ) {
+				return function() {
 					return this._ListManager[ name ].apply( this._ListManager, arguments );
 				};
-			})( name );
+			} )( name );
 		}
 	};
 
-	_connect1 = function(){
+	_connect1 = function() {
 		var i = arguments.length;
 		var name;
-		while ( i-- ) {
+		while( i-- ) {
 			name = arguments[ i ];
-			fn[ name ] = (function( name ){
-				return function(){
+			fn[ name ] = ( function( name ) {
+				return function() {
 					if( this._isMove ) return;
 					return this._ListManager[ name ].apply( this._ListManager, arguments );
 				};
-			})( name );
+			} )( name );
 		}
 	};
 
@@ -671,10 +672,12 @@ dk.makeClass( 'Slider', ( function() {
 
 		_addEvent = function() {
 			var caller = this._caller;
-			this._$li.find( '>a' ).on( 'click', function( e ) {
-				e.preventDefault();
-				var id = $( this ).parent().index();
-				caller.act( id );
+			this._$li.find( '>a' ).each( function( i ) {
+				var $this = $( this );
+				$this.on( 'click', function( e ) {
+					e.preventDefault();
+					caller.act( i );
+				} );
 			} );
 		};
 
