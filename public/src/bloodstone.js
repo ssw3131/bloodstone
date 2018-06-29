@@ -8,7 +8,7 @@
 	// 보정패치 :
 	W.console = W[ 'console' ] ? W[ 'console' ] : { log: function() {} };
 	W.log = W[ 'log' ] ? W[ 'log' ] : function() {
-		if( !dk.IS_DEBUG )  return;
+		if( !dk.IS_DEBUG ) return;
 		if( arguments[ 0 ] == 'debug' ) {
 			W.console.info( arguments[ 1 ] );
 			debugger;
