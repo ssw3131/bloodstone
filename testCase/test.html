@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="dk bloodstone" />
+	<meta name="description" content="dk bloodstone" />
+	<title>dk testCase - 테스트케이스</title>
+
+	<!--css-->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.7.1.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/common.css"> -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/qunit/qunit-2.7.1.js"></script>
+	<script src="../public/dist/bloodstone.js"></script>
+
+</head>
+
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+	<script type="text/javascript">
+		QUnit.test("hello test", function(assert) {
+			assert.ok(1 == 1, "Passed!");
+			assert.ok(1 == "1", "Passed!");
+		});
+		// QUnit.test("dk DETECTOR test", function(assert) {
+		// 	assert.ok(dk.DETECTOR, "Passed!");
+		// 	for (var k in dk.DETECTOR) {
+		// 		if (dk.DETECTOR.hasOwnProperty(k)) {
+		// 			assert.ok(dk.DETECTOR[ k ], "Passed!");
+		// 		}
+		// 	}
+		// });
+	</script>
+</body>
+
+</html>

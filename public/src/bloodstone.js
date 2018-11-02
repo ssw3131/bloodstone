@@ -17,7 +17,7 @@
 		}
 	};
 	Date.now = Date.now * 1 || function() { return +new Date };
-	W.requestAnimationFrame = ( function() { return W.requestAnimationFrame || W.webkitRequestAnimationFrame || W.mozRequestAnimationFrame || function( loop ) { W.setTimeout( loop, 17 ) } } )();
+	W.requestAnimationFrame = ( function() { return W.requestAnimationFrame || W.webkitRequestAnimationFrame || W.mozRequestAnimationFrame || function( loop ) { return W.setTimeout( loop, 17 ) } } )();
 	W.cancelAnimationFrame = ( function() { return W.cancelAnimationFrame || W.webkitCancelRequestAnimationFrame || W.webkitCancelAnimationFrame || W.mozCancelAnimationFrame || function( requestID ) { W.clearTimeout( requestID ) } } )();
 	( function( f ) { W.setTimeout = f( W.setTimeout ), W.setInterval = f( W.setInterval ) } )( function( f ) {
 		return function( a, b ) {
